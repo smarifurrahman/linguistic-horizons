@@ -1,12 +1,20 @@
 
 import { Link } from "react-router-dom";
 import ActiveRoute from "../ActiveRoute/ActiveRoute";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext);
 
     const navItems = <>
         <li><ActiveRoute to="/">Home</ActiveRoute></li>
-        <li><ActiveRoute to="/signup">Sign Up</ActiveRoute></li>
+        <li><ActiveRoute to="/instructors">Instructors</ActiveRoute></li>
+        <li><ActiveRoute to="/classes">Classes</ActiveRoute></li>
+        {
+            user ? <li><ActiveRoute to="/dashboard">Dashboard</ActiveRoute></li> :
+                <li><ActiveRoute to="/signup">Sign Up</ActiveRoute></li>
+        }
     </>
 
     return (
@@ -28,8 +36,17 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                {
+                    user ?
+                        <div className='flex items-center gap-3'>
+                            <div style={{ "--tooltip-color": "#4acdd5", "--tooltip-text-color": "#FFFFFF" }} className='tooltip tooltip-left' data-tip={user.displayName}>
+                                <img className='w-[45px] h-[45px] rounded-full object-cover align-top hover:tooltip' src={user.photoURL} alt="user photo" />
+                            </div>
+                            <button onClick={logOut} className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-6">Logout</button>
+                        </div> :
 
-                <Link to="/login" className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-white px-6">Login</Link>
+                        <Link to="/login" className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-white px-6">Login</Link>
+                }
 
             </div>
         </div >
