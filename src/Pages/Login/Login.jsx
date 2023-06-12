@@ -1,11 +1,17 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     const [error, setError] = useState('');
+    const [showPass, setShowPass] = useState(false);
+
+    const togglePasswordVisibility = (event) => {
+        event.preventDefault();
+        setShowPass(!showPass);
+    };
 
     const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
 
@@ -93,11 +99,15 @@ const Login = () => {
                             </label>
                             <input type="text" name='email' placeholder="email" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                            <input type={showPass ? 'text' : 'password'} name='password' placeholder="password" className="input input-bordered" required />
+                            <button onClick={togglePasswordVisibility} className="absolute top-[52%] right-6 transform -translate-y-1/2">
+                                {showPass ? <FaEye /> : <FaEyeSlash />}
+                            </button>
+
                             <label className="label">
                                 <Link to="#" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
