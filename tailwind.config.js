@@ -16,8 +16,10 @@ export default {
         'deep-white': '#F4F4F4',
         'footer-dark': '#1D2228',
         'footer-white': 'rgba(255, 255, 255, 0.7)',
-        'primary-color': '#4acdd5',
-        'secondary-color': '#ff6799',
+        'primary-color': '#60e188',
+        'secondary-color': '#fdb157',
+        'tertiary-color': '#EEFF25',
+        'pink-color': '#ff6b6d',
         'white-secondary': '#fafafa',
       },
       fontFamily: {

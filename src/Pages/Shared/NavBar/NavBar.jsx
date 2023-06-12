@@ -29,7 +29,7 @@ const NavBar = () => {
             </div>
             <div className="navbar-end">
 
-                <Link to="/login" className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-6">Login</Link>
+                <Link to="/login" className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-white px-6">Login</Link>
 
             </div>
         </div >
