@@ -22,7 +22,7 @@ const SignUp = () => {
         console.log(name, email, password, photo)
 
         if (password.length < 6) {
-            setError('Please add at least 6 characters in your password');
+            setError('Password should be at least 6 characters');
             return;
         }
 
