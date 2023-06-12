@@ -16,12 +16,28 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
         const photo = form.photo.value;
 
         console.log(name, email, password, photo)
 
         if (password.length < 6) {
             setError('Please add at least 6 characters in your password');
+            return;
+        }
+
+        if (!/[A-Z]/.test(password)) {
+            setError('Password should contain at least one capital letter');
+            return;
+        }
+
+        if (!/[!@#$%^&*]/.test(password)) {
+            setError('Password should contain at least one special symbol (!, @, #, $, %, ^, &, *)');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError('Password not matched');
             return;
         }
 
@@ -111,6 +127,12 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
+                            </label>
+                            <input type="password" name='confirmPassword' placeholder="confirm password" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
