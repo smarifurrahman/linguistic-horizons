@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className='mt-24 py-24 bg-dark'>
+        <footer className='mt-24 py-24 bg-dark bg-opacity-95'>
             <div className='w-[85%] mx-auto grid lg:grid-cols-6 gap-14 text-footer-white'>
                 <div className='col-span-2'>
                     <h3 className='text-white mb-5 text-2xl font-bold'>Linguistic Horizons</h3>
