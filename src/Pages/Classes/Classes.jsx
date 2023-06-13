@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import Spinner from "../Shared/Spinner/Spinner";
-import Instructor from "./Instructor/Instructor";
 import PageHeader from "../Shared/PageHeader/PageHeader";
+import ClassCard from "./Class/Class";
 
-const Instructors = () => {
-    const [instructors, setInstructors] = useState([]);
+const Classes = () => {
+    const [classes, setClasses] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('http://localhost:5000/classes')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setInstructors(data);
+                setClasses(data);
                 setLoading(false)
             })
             .catch(error => {
@@ -28,18 +28,18 @@ const Instructors = () => {
 
     return (
         <div className='w-[85%] mx-auto'>
-            <PageHeader title="Instructors"></PageHeader>
+            <PageHeader title="Classes"></PageHeader>
 
-            <div className="w-full">
+            <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6'>
                 {
-                    instructors.map((instructor) => <Instructor
-                        key={instructor._id}
-                        instructor={instructor}
-                    ></Instructor>)
+                    classes.map((singleClass) => <ClassCard
+                        key={singleClass._id}
+                        singleClass={singleClass}
+                    ></ClassCard>)
                 }
             </div>
         </div >
     );
 };
 
-export default Instructors;
+export default Classes;
