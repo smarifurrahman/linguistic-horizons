@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Spinner from "../Shared/Spinner/Spinner";
 import PageHeader from "../Shared/PageHeader/PageHeader";
-import ClassCard from "./Class/Class";
+import ClassCard from "./ClassCard/ClassCard";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
