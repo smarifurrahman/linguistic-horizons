@@ -9,7 +9,8 @@ const SelectedClass = () => {
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
 
-    const url = `http://localhost:5000/seletedClasses?email=${user.email}`;
+     // const url = `http://localhost:5000/enrolledClasses?email=${user.email}`;
+     const url = `http://localhost:5000/classes`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -37,7 +38,7 @@ const SelectedClass = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://brainwave-world-server.vercel.app/toys/${id}`, {
+                fetch(`http://localhost:5000/seletedClasses/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
