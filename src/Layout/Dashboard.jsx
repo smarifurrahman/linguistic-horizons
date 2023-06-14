@@ -26,7 +26,7 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/addClass"> <FaUtensils></FaUtensils> Add an Class</NavLink></li>
                             <li><NavLink to="/dashboard/manageClass"><FaWallet></FaWallet> Manage Class</NavLink></li>
-                            <li><NavLink to="/"><FaBook></FaBook> Manage Enrolled</NavLink></li>
+                            <li><NavLink to="/dashboard/instructorhome"><FaBook></FaBook> Instructors</NavLink></li>
                             <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
                         </>
                             : <>

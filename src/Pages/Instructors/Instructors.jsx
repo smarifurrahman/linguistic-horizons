@@ -8,7 +8,7 @@ const Instructors = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('http://localhost:5000/users')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -30,7 +30,7 @@ const Instructors = () => {
         <div className='w-[85%] mx-auto'>
             <PageHeader title="Instructors"></PageHeader>
 
-            <div className="w-full">
+            <div className="w-full grid grid-cols-3">
                 {
                     instructors.map((instructor) => <Instructor
                         key={instructor._id}
