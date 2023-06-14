@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
 
@@ -109,6 +110,9 @@ const SignUp = () => {
 
     return (
         <div className="hero min-h-screen">
+            <Helmet>
+                <title>Linguistic Horizons | Sign Up</title>
+            </Helmet>
             <div className="hero-content flex-col ">
                 <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body p-12 pb-0 mb-6 sm:w-[400px]">
@@ -174,7 +178,7 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-control mt-4">
-                            <button className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color">Sign Up</button>
+                            <input className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color" type="submit" value="Sign Up" />
                         </div>
                         <p className='text-pink-start text-center mt-4'>{error}</p>
                     </form>
