@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
@@ -67,14 +67,27 @@ const SignUp = () => {
 
                 updateUser(result.user, data.name, data.photo)
                     .then(() => {
-                        console.log('profile updated');
-                        reset();
-                        Swal.fire(
-                            'Email Login Successful!',
-                            'Your have been logged in successfully.',
-                            'success'
-                        )
-                        navigate(from, { replace: true })
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    console.log('profile updated');
+                                    reset();
+                                    Swal.fire(
+                                        'Email Login Successful!',
+                                        'Your have been logged in successfully.',
+                                        'success'
+                                    )
+                                    navigate(from, { replace: true })
+                                }
+                            })
                     })
                     .catch(error => {
                         console.error(error.message);
@@ -88,7 +101,7 @@ const SignUp = () => {
 
     };
 
-    const passwordRef = useRef(null);
+    // const passwordRef = useRef(null);
     // const [disabled, setDisabled] = useState(false);
 
     // const handleConfirmPassword = (e) => {
@@ -139,7 +152,7 @@ const SignUp = () => {
                                 minLength: 6,
                                 maxLength: 20,
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
-                            })} ref={passwordRef} name='password' placeholder="password" className="input input-bordered" />
+                            })} name='password' placeholder="password" className="input input-bordered" />
                             {errors.password?.type === 'required' && <p className="text-red-600 text-sm mt-2">Password is required</p>}
                             {errors.password?.type === 'minLength' && <p className="text-red-600 text-sm mt-2">Password must be 6 characters</p>}
                             {errors.password?.type === 'maxLength' && <p className="text-red-600 text-sm mt-2">Password must be less than 20 characters</p>}
