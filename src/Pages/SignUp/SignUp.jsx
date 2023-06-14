@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
@@ -88,6 +88,19 @@ const SignUp = () => {
 
     };
 
+    const passwordRef = useRef(null);
+    // const [disabled, setDisabled] = useState(false);
+
+    // const handleConfirmPassword = (e) => {
+    //     const password = e.target.value;
+    //     if (password !== passwordRef) {
+    //         setDisabled(false);
+    //     }
+    //     else {
+    //         setDisabled(true)
+    //     }
+    // }
+
     return (
         <div className="hero min-h-screen">
             <Helmet>
@@ -126,7 +139,7 @@ const SignUp = () => {
                                 minLength: 6,
                                 maxLength: 20,
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
-                            })} name='password' placeholder="password" className="input input-bordered" />
+                            })} ref={passwordRef} name='password' placeholder="password" className="input input-bordered" />
                             {errors.password?.type === 'required' && <p className="text-red-600 text-sm mt-2">Password is required</p>}
                             {errors.password?.type === 'minLength' && <p className="text-red-600 text-sm mt-2">Password must be 6 characters</p>}
                             {errors.password?.type === 'maxLength' && <p className="text-red-600 text-sm mt-2">Password must be less than 20 characters</p>}
@@ -158,7 +171,7 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-control mt-4">
-                            <input className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color" type="submit" value="Sign Up" />
+                            <input disabled={false} className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color" type="submit" value="Sign Up" />
                         </div>
                         <p className='text-red-600 text-center mt-4'>{error}</p>
                     </form>
