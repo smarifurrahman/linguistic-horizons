@@ -3,6 +3,9 @@ import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, Fa
 
 const Dashboard = () => {
 
+    // todo load admin data from server
+    const isAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -18,17 +21,21 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
 
-                    <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                    <li><NavLink to="/dashboard/addClass"> <FaUtensils></FaUtensils> Add an Class</NavLink></li>
-                    <li><NavLink to="/dashboard/manageClass"><FaWallet></FaWallet> Manage Class</NavLink></li>
-                    <li><NavLink to="/"><FaBook></FaBook> Manage Enrolled</NavLink></li>
-                    <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
-
-
-                    <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
-                    <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Enrolled</NavLink></li>
-                    <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
-                    <li><NavLink to="/dashboard/myclass"><FaShoppingCart></FaShoppingCart> My Class</NavLink></li>
+                    {
+                        isAdmin ? <>
+                            <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
+                            <li><NavLink to="/dashboard/addClass"> <FaUtensils></FaUtensils> Add an Class</NavLink></li>
+                            <li><NavLink to="/dashboard/manageClass"><FaWallet></FaWallet> Manage Class</NavLink></li>
+                            <li><NavLink to="/"><FaBook></FaBook> Manage Enrolled</NavLink></li>
+                            <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
+                        </>
+                            : <>
+                                <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
+                                <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Enrolled</NavLink></li>
+                                <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
+                                <li><NavLink to="/dashboard/myclass"><FaShoppingCart></FaShoppingCart> My Class</NavLink></li>
+                            </>
+                    }
 
 
                     <div className="divider"></div>
