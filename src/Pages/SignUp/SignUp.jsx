@@ -13,7 +13,7 @@ const SignUp = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    console.log('login page location', location);
+    
     const from = location.state?.from?.pathname || '/';
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -191,6 +191,7 @@ const SignUp = () => {
                     <div className='px-12 pb-12'>
                         <hr />
                         <p className='text-center mt-2'>or Continue with</p>
+
                         <div className='flex gap-3 justify-center'>
                             <div className="form-control mt-4">
                                 <button onClick={handleGoogleSignIn} className="btn text-primary-color hover:text-white bg-white hover:bg-primary-color border-primary-color hover:border-primary-color px-6">
@@ -203,6 +204,7 @@ const SignUp = () => {
                                 </button>
                             </div>
                         </div>
+
                         <div>
                             <p className="label-text-alt text-center mt-4">Already have an account ?
                                 <span> <Link className="link link-hover text-primary-color font-semibold" to="/login">Login</Link> </span>
