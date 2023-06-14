@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
@@ -11,66 +11,13 @@ const SignUp = () => {
     const [error, setError] = useState('');
     const { createUser, updateUser, googleSignIn, githubSignIn } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log('login page location', location);
+    const from = location.state?.from?.pathname || '/';
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-
-    const handleSignUp = event => {
-        event.preventDefault();
-        setError('');
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const confirmPassword = form.confirmPassword.value;
-        const photo = form.photo.value;
-
-        console.log(name, email, password, photo)
-
-        if (password.length < 6) {
-            setError('Password should be at least 6 characters');
-            return;
-        }
-
-        if (!/[A-Z]/.test(password)) {
-            setError('Password should contain at least one capital letter');
-            return;
-        }
-
-        if (!/[!@#$%^&*]/.test(password)) {
-            setError('Password should contain at least one special symbol (!, @, #, $, %, ^, &, *)');
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            setError('Password not matched');
-            return;
-        }
-
-        createUser(email, password)
-            .then(result => {
-                const createdUser = result.user;
-                console.log(createdUser);
-                updateUser(result.user, name, photo)
-                    .then(() => {
-                        console.log('profile updated');
-                        form.reset();
-                        Swal.fire(
-                            'Email Login Successful!',
-                            'Your have been logged in successfully.',
-                            'success'
-                        )
-                    })
-                    .catch(error => {
-                        console.error(error.message);
-                        setError(error.message);
-                    })
-            })
-            .catch(error => {
-                console.error(error.message);
-                setError(error.message);
-            })
-
-    }
 
     const handleGoogleSignIn = () => {
         googleSignIn()
@@ -82,6 +29,7 @@ const SignUp = () => {
                     'Your have been logged in successfully.',
                     'success'
                 )
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error.message);
@@ -99,6 +47,7 @@ const SignUp = () => {
                     'Your have been logged in successfully.',
                     'success'
                 )
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error.message);
@@ -106,7 +55,38 @@ const SignUp = () => {
             })
     }
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        if (data.password !== data.confirmPassword) {
+            setError('Password not matched');
+            return;
+        }
+        createUser(data.email, data.password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+
+                updateUser(result.user, data.name, data.photo)
+                    .then(() => {
+                        console.log('profile updated');
+                        reset();
+                        Swal.fire(
+                            'Email Login Successful!',
+                            'Your have been logged in successfully.',
+                            'success'
+                        )
+                        navigate(from, { replace: true })
+                    })
+                    .catch(error => {
+                        console.error(error.message);
+                        setError(error.message);
+                    })
+            })
+            .catch(error => {
+                console.error(error.message);
+                setError(error.message);
+            })
+
+    };
 
     return (
         <div className="hero min-h-screen">
@@ -133,7 +113,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" {...register("email", { required: true })} name='email' placeholder="email" className="input input-bordered" />
+                            <input type="email" {...register("email", { required: true })} name='email' placeholder="email" className="input input-bordered" />
                             {errors.email && <span className="text-red-600 text-sm mt-2">Email is required</span>}
                         </div>
 
@@ -180,7 +160,7 @@ const SignUp = () => {
                         <div className="form-control mt-4">
                             <input className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color" type="submit" value="Sign Up" />
                         </div>
-                        <p className='text-pink-start text-center mt-4'>{error}</p>
+                        <p className='text-red-600 text-center mt-4'>{error}</p>
                     </form>
                     <div className='px-12 pb-12'>
                         <hr />
