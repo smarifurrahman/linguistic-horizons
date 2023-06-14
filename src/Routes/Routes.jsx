@@ -7,10 +7,11 @@ import Login from "../Pages/Login/Login";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import PrivateRoute from "./PrivateRoute";
-import Dashboard from "../Pages/Dashboard/Dashboard";
 import InstructorHome from "../Pages/InstructorAccess/InstructorHome/InstructorHome";
 import AddClass from "../Pages/InstructorAccess/AddClass/AddClass";
 import Student from "../Pages/Dashboard/Student/Student";
+import Dashboard from "../Layout/Dashboard";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
+            {
+                path: 'allusers',
+                element: <AllUsers></AllUsers>
+            },
             // instructor routes
             {
                 path: 'instructorhome',
