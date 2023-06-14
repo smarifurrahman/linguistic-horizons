@@ -1,59 +1,22 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
 
     const [error, setError] = useState('');
-    const { createUser, updateUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const from = location.state?.from?.pathname || '/';
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
-
-    const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then(result => {
-                const createdUser = result.user;
-                console.log(createdUser);
-                Swal.fire(
-                    'Google Login Successful!',
-                    'Your have been logged in successfully.',
-                    'success'
-                )
-                navigate(from, { replace: true })
-            })
-            .catch(error => {
-                console.error(error.message);
-                setError(error.message);
-            })
-    }
-
-    const handleGithubSignIn = () => {
-        githubSignIn()
-            .then(result => {
-                const createdUser = result.user;
-                console.log(createdUser);
-                Swal.fire(
-                    'GitHub Login Successful!',
-                    'Your have been logged in successfully.',
-                    'success'
-                )
-                navigate(from, { replace: true })
-            })
-            .catch(error => {
-                console.error(error.message);
-                setError(error.message);
-            })
-    }
 
     const onSubmit = (data) => {
         if (data.password !== data.confirmPassword) {
@@ -192,18 +155,7 @@ const SignUp = () => {
                         <hr />
                         <p className='text-center mt-2'>or Continue with</p>
 
-                        <div className='flex gap-3 justify-center'>
-                            <div className="form-control mt-4">
-                                <button onClick={handleGoogleSignIn} className="btn text-primary-color hover:text-white bg-white hover:bg-primary-color border-primary-color hover:border-primary-color px-6">
-                                    <FaGoogle className='text-2xl' />
-                                </button>
-                            </div>
-                            <div className="form-control mt-4">
-                                <button onClick={handleGithubSignIn} className="btn text-primary-color hover:text-white bg-white hover:bg-primary-color border-primary-color hover:border-primary-color px-6">
-                                    <FaGithub className='text-2xl' />
-                                </button>
-                            </div>
-                        </div>
+                        <SocialLogin setError={setError}></SocialLogin>
 
                         <div>
                             <p className="label-text-alt text-center mt-4">Already have an account ?
