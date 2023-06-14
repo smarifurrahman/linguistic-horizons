@@ -29,13 +29,17 @@ const SocialLogin = ({ setError }) => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.insertedId) {
-                            Swal.fire(
-                                'Google Login Successful!',
-                                'Your have been logged in successfully.',
-                                'success'
-                            )
-                            navigate(from, { replace: true })
+                            console.log('New User Registered.');
                         }
+                        else {
+                            console.log('Registered User.')
+                        }
+                        Swal.fire(
+                            'Google Login Successful!',
+                            'Your have been logged in successfully.',
+                            'success'
+                        )
+                        navigate(from, { replace: true })
                     })
             })
             .catch(error => {
@@ -61,13 +65,17 @@ const SocialLogin = ({ setError }) => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.insertedId) {
-                            Swal.fire(
-                                'GitHub Login Successful!',
-                                'Your have been logged in successfully.',
-                                'success'
-                            )
-                            navigate(from, { replace: true })
+                            console.log('New User Registered.');
                         }
+                        else {
+                            console.log('Registered User.')
+                        }
+                        Swal.fire(
+                            'GitHub Login Successful!',
+                            'Your have been logged in successfully.',
+                            'success'
+                        )
+                        navigate(from, { replace: true })
                     })
             })
             .catch(error => {
