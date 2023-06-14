@@ -15,14 +15,28 @@ const SocialLogin = ({ setError }) => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                const createdUser = result.user;
-                console.log(createdUser);
-                Swal.fire(
-                    'Google Login Successful!',
-                    'Your have been logged in successfully.',
-                    'success'
-                )
-                navigate(from, { replace: true })
+                const loggedUser = result.user;
+                console.log(loggedUser);
+
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire(
+                                'Google Login Successful!',
+                                'Your have been logged in successfully.',
+                                'success'
+                            )
+                            navigate(from, { replace: true })
+                        }
+                    })
             })
             .catch(error => {
                 console.error(error.message);
@@ -33,14 +47,28 @@ const SocialLogin = ({ setError }) => {
     const handleGithubSignIn = () => {
         githubSignIn()
             .then(result => {
-                const createdUser = result.user;
-                console.log(createdUser);
-                Swal.fire(
-                    'GitHub Login Successful!',
-                    'Your have been logged in successfully.',
-                    'success'
-                )
-                navigate(from, { replace: true })
+                const loggedUser = result.user;
+                console.log(loggedUser);
+
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire(
+                                'GitHub Login Successful!',
+                                'Your have been logged in successfully.',
+                                'success'
+                            )
+                            navigate(from, { replace: true })
+                        }
+                    })
             })
             .catch(error => {
                 console.error(error.message);
