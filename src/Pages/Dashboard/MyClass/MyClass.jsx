@@ -16,33 +16,42 @@ const MyClass = () => {
     }
 
     const onsubmit = (data) => {
-        const feedback = data.feedback;
+        const { className, classPhoto, availableSeats, price } = data;
         const updateClassInfo = {
-            feedback,
+            className,
+            classPhoto,
+            availableSeats,
+            price,
         };
 
-        // fetch(`http://localhost:5000/classes/feedback/${clickedClass._id}`, {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(updateClassInfo)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.modifiedCount) {
-        //             reset();
-        //             refetch();
-        //             Swal.fire({
-        //                 position: 'center',
-        //                 icon: 'success',
-        //                 title: `Feedback sent for ${clickedClass.className} success!`,
-        //                 showConfirmButton: false,
-        //                 timer: 1500
-        //             })
-        //         }
-        //     })
+        console.log(updateClassInfo)
+
+        fetch(`http://localhost:5000/classes/updateclass/${clickedClass._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateClassInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    reset();
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${clickedClass.className} update success!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                setError(error);
+            })
     }
 
 
@@ -57,8 +66,6 @@ const MyClass = () => {
                     <thead>
                         <tr>
                             <th>Class Information</th>
-                            <th>Instructor Name</th>
-                            <th>Instructor Email</th>
                             <th>Available Seats</th>
                             <th>Price</th>
                             <th>Status</th>
@@ -92,7 +99,7 @@ const MyClass = () => {
                             <label className="label">
                                 <span className="label-text">Class Name</span>
                             </label>
-                            <input {...register("className", { required: true })} type="text" name='className' placeholder="title" className="input input-bordered" />
+                            <input {...register("className", { required: true })} defaultValue={clickedClass.className} type="text" name='className' placeholder="title" className="input input-bordered" />
                             {errors.className?.type === 'required' && <p className="text-red-600 text-sm mt-2">Class Name is required</p>}
                         </div>
 
@@ -100,7 +107,7 @@ const MyClass = () => {
                             <label className="label">
                                 <span className="label-text">Class Photo</span>
                             </label>
-                            <input {...register("classPhoto", { required: true })} type="text" name='classPhoto' placeholder="url" className="input input-bordered" />
+                            <input {...register("classPhoto", { required: true })} defaultValue={clickedClass.classPhoto} type="text" name='classPhoto' placeholder="url" className="input input-bordered" />
                             {errors.classPhoto?.type === 'required' && <p className="text-red-600 text-sm mt-2">Class Photo is required</p>}
                         </div>
 
@@ -111,7 +118,7 @@ const MyClass = () => {
                             <input {...register("availableSeats", {
                                 required: true,
                                 pattern: /(?=.*[0-9])/
-                            })} type="text" name='availableSeats' placeholder="seats" className="input input-bordered" />
+                            })} defaultValue={clickedClass.availableSeats} type="text" name='availableSeats' placeholder="seats" className="input input-bordered" />
                             {errors.availableSeats?.type === 'required' && <p className="text-red-600 text-sm mt-2">Seats is required</p>}
                             {errors.availableSeats?.type === 'pattern' && <p className="text-red-600 text-sm mt-2">Seats must be in number.</p>}
                         </div>
@@ -123,7 +130,7 @@ const MyClass = () => {
                             <input {...register("price", {
                                 required: true,
                                 pattern: /(?=.*[0-9])/
-                            })} type="text" name='price' placeholder="price" className="input input-bordered" />
+                            })} defaultValue={clickedClass.price} type="text" name='price' placeholder="price" className="input input-bordered" />
                             {errors.price?.type === 'required' && <p className="text-red-600 text-sm mt-2">Price is required</p>}
                             {errors.price?.type === 'pattern' && <p className="text-red-600 text-sm mt-2">Price must be in number.</p>}
                         </div>
