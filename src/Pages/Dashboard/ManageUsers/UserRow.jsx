@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 const UserRow = ({ user, handleMakeAdmin, handleMakeInstructor }) => {
 
@@ -22,7 +21,7 @@ const UserRow = ({ user, handleMakeAdmin, handleMakeInstructor }) => {
             <td>{role}</td>
             <th>
                 <div className="flex flex-col gap-2 w-fit">
-                    <Link onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-xs bg-primary-color">Make Admin</Link>
+                    <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-xs bg-primary-color">Make Admin</button>
                     <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost btn-xs bg-secondary-color">Make Instructor</button>
                 </div>
             </th>

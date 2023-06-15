@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 const ClassRow = ({ aClass, handleApprove, handleDeny, handleFeedback }) => {
 
@@ -25,8 +24,8 @@ const ClassRow = ({ aClass, handleApprove, handleDeny, handleFeedback }) => {
             <td>{status}</td>
             <th>
                 <div className="flex flex-col gap-2 w-fit">
-                    <Link onClick={() => handleApprove(aClass)} className="btn btn-ghost btn-xs bg-primary-color">Approve</Link>
-                    <button onClick={() => handleDeny(aClass)} className="btn btn-ghost btn-xs bg-pink-color">Deny</button>
+                    <button disabled={status === 'Approved' || status === 'Denied' ? true : false} onClick={() => handleApprove(aClass)} className="btn btn-ghost btn-xs bg-primary-color">Approve</button>
+                    <button disabled={status === 'Approved' || status === 'Denied' ? true : false} onClick={() => handleDeny(aClass)} className="btn btn-ghost btn-xs bg-pink-color">Deny</button>
                     <button onClick={() => handleFeedback(aClass)} className="btn btn-ghost btn-xs bg-secondary-color">Feedback</button>
                 </div>
             </th>
