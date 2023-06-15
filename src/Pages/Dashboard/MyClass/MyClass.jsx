@@ -8,6 +8,7 @@ const MyClass = () => {
     const [classes, refetch] = useMyClasses();
     const [clickedClass, setClickedClass] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [error, setError] = useState('');
 
     const handleUpdate = aClass => {
         setClickedClass(aClass);
@@ -80,18 +81,58 @@ const MyClass = () => {
 
             <dialog id="updateClassModal" className="modal">
                 <form onSubmit={handleSubmit(onsubmit)} method="dialog" className="modal-box w-11/12 max-w-2xl">
-                    <h3 className="font-bold text-lg">Send Feedback!</h3>
-                    <textarea {...register("feedback", {
-                        required: true,
-                        minLength: 10,
-                        maxLength: 500
-                    })} name="feedback" rows="4" className="p-4 mt-2 border-2 rounded-lg border-gray w-full resize-none"></textarea>
-                    {errors.feedback?.type === 'required' && <p className="text-red-600 text-sm mt-2">Feedback is required</p>}
-                    {errors.feedback?.type === 'minLength' && <p className="text-red-600 text-sm mt-2">Feedback must be 10 characters</p>}
-                    {errors.feedback?.type === 'maxLength' && <p className="text-red-600 text-sm mt-2">feedback must be less than 500 characters</p>}
-                    <div className="modal-action mt-2">
-                        <button className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color">Submit</button>
+                    <div className="text-center">
+                        <h1 className="text-3xl font-bold">Update Class</h1>
+                        <hr className='mt-5' />
                     </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Class Name</span>
+                            </label>
+                            <input {...register("className", { required: true })} type="text" name='className' placeholder="title" className="input input-bordered" />
+                            {errors.className?.type === 'required' && <p className="text-red-600 text-sm mt-2">Class Name is required</p>}
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Class Photo</span>
+                            </label>
+                            <input {...register("classPhoto", { required: true })} type="text" name='classPhoto' placeholder="url" className="input input-bordered" />
+                            {errors.classPhoto?.type === 'required' && <p className="text-red-600 text-sm mt-2">Class Photo is required</p>}
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Available Seats</span>
+                            </label>
+                            <input {...register("availableSeats", {
+                                required: true,
+                                pattern: /(?=.*[0-9])/
+                            })} type="text" name='availableSeats' placeholder="seats" className="input input-bordered" />
+                            {errors.availableSeats?.type === 'required' && <p className="text-red-600 text-sm mt-2">Seats is required</p>}
+                            {errors.availableSeats?.type === 'pattern' && <p className="text-red-600 text-sm mt-2">Seats must be in number.</p>}
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Price</span>
+                            </label>
+                            <input {...register("price", {
+                                required: true,
+                                pattern: /(?=.*[0-9])/
+                            })} type="text" name='price' placeholder="price" className="input input-bordered" />
+                            {errors.price?.type === 'required' && <p className="text-red-600 text-sm mt-2">Price is required</p>}
+                            {errors.price?.type === 'pattern' && <p className="text-red-600 text-sm mt-2">Price must be in number.</p>}
+                        </div>
+                    </div>
+
+                    <div className="form-control mt-4">
+                        <button type="submit" className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color">Add Class</button>
+                    </div>
+                    <p className='text-pink-start text-center mt-4'>{error}</p>
                 </form>
             </dialog>
         </div >
