@@ -59,8 +59,8 @@ const ManageClasses = () => {
         const feedback = data.feedback;
         console.log(feedback);
 
-        // const feedbackInfo = { feedback };
-        // console.log(feedbackInfo);
+        const feedbackInfo = { feedback };
+        console.log(feedbackInfo);
 
 
         fetch(`http://localhost:5000/classes/feedback/${clickedClass._id}`, {
@@ -68,13 +68,14 @@ const ManageClasses = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(feedback)
+            body: JSON.stringify(feedbackInfo)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
                     reset();
+                    refetch();
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
