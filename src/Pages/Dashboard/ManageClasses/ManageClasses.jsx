@@ -126,11 +126,11 @@ const ManageClasses = () => {
                     <textarea {...register("feedback", {
                         required: true,
                         minLength: 10,
-                        maxLength: 250
+                        maxLength: 500
                     })} name="feedback" rows="4" className="p-4 mt-2 border-2 rounded-lg border-gray w-full resize-none"></textarea>
                     {errors.feedback?.type === 'required' && <p className="text-red-600 text-sm mt-2">Feedback is required</p>}
                     {errors.feedback?.type === 'minLength' && <p className="text-red-600 text-sm mt-2">Feedback must be 10 characters</p>}
-                    {errors.feedback?.type === 'maxLength' && <p className="text-red-600 text-sm mt-2">feedback must be less than 250 characters</p>}
+                    {errors.feedback?.type === 'maxLength' && <p className="text-red-600 text-sm mt-2">feedback must be less than 500 characters</p>}
                     <div className="modal-action mt-2">
                         <button className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color">Submit</button>
                     </div>
