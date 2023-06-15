@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import useUsers from "../../../hooks/useUsers";
 import UserRow from "./UserRow";
 
-const AllUsers = () => {
+const ManageUsers = () => {
     const [users, refetch] = useUsers();
 
     const handleMakeAdmin = user => {
@@ -49,7 +49,7 @@ const AllUsers = () => {
     return (
         <div className='w-[85%] mx-auto'>
             <div className='text-center py-14'>
-                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>All Users</h2>
+                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>Manage Users</h2>
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -78,4 +78,4 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+export default ManageUsers;

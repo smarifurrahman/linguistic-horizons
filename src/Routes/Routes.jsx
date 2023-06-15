@@ -11,7 +11,8 @@ import InstructorHome from "../Pages/InstructorAccess/InstructorHome/InstructorH
 import AddClass from "../Pages/InstructorAccess/AddClass/AddClass";
 import Student from "../Pages/Dashboard/Student/Student";
 import Dashboard from "../Layout/Dashboard";
-import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 
 const router = createBrowserRouter([
     {
@@ -46,8 +47,12 @@ const router = createBrowserRouter([
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
-                path: 'allusers',
-                element: <AllUsers></AllUsers>
+                path: 'manageusers',
+                element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'manageclasses',
+                element: <ManageClasses></ManageClasses>
             },
             // instructor routes
             {
