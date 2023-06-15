@@ -1,7 +1,7 @@
 
-const ClassRow = ({ aClass, handleApprove, handleDeny, handleFeedback }) => {
+const MyClassRow = ({ aClass, handleUpdate }) => {
 
-    const { classPhoto, className, instructorName, instructorEmail, availableSeats, price, status } = aClass;
+    const { classPhoto, className, instructorName, instructorEmail, availableSeats, price, status, feedback } = aClass;
 
     return (
         <tr>
@@ -22,15 +22,15 @@ const ClassRow = ({ aClass, handleApprove, handleDeny, handleFeedback }) => {
             <td>{availableSeats}</td>
             <td>${price}</td>
             <td>{status}</td>
+            <td>{status}</td>
+            <td>{feedback}</td>
             <th>
                 <div className="flex flex-col gap-2 w-fit">
-                    <button disabled={status === 'Approved' || status === 'Denied' ? true : false} onClick={() => handleApprove(aClass)} className="btn btn-ghost btn-xs bg-primary-color">Approve</button>
-                    <button disabled={status === 'Approved' || status === 'Denied' ? true : false} onClick={() => handleDeny(aClass)} className="btn btn-ghost btn-xs bg-pink-color">Deny</button>
-                    <button onClick={() => handleFeedback(aClass)} className="btn btn-ghost btn-xs bg-secondary-color">Feedback</button>
+                    <button onClick={() => handleUpdate(aClass)} className="btn btn-ghost btn-xs bg-primary-color">Update</button>
                 </div>
             </th>
         </tr>
     );
 };
 
-export default ClassRow;
+export default MyClassRow;

@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBook, FaUsers, FaPlusSquare } from 'react-icons/fa';
+import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBook, FaUsers, FaPlusSquare, FaAtlas } from 'react-icons/fa';
 const Dashboard = () => {
 
     // todo load admin data from server
@@ -25,6 +25,7 @@ const Dashboard = () => {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/instructorHome"><FaWallet></FaWallet> Instructor Home</NavLink></li>
+                            <li><NavLink to="/dashboard/myclasses"> <FaAtlas></FaAtlas> My Classes</NavLink></li>
                             <li><NavLink to="/dashboard/addClass"> <FaPlusSquare></FaPlusSquare> Add an Class</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                             <li><NavLink to="/dashboard/manageclasses"><FaBook></FaBook> Manage Classes</NavLink></li>

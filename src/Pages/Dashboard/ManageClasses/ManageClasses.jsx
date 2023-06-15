@@ -55,13 +55,8 @@ const ManageClasses = () => {
     }
 
     const onsubmit = (data) => {
-        console.log('aaa', clickedClass);
         const feedback = data.feedback;
-        console.log(feedback);
-
         const feedbackInfo = { feedback };
-        console.log(feedbackInfo);
-
 
         fetch(`http://localhost:5000/classes/feedback/${clickedClass._id}`, {
             method: 'PATCH',
