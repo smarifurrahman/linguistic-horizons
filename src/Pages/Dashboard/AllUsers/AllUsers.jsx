@@ -4,7 +4,6 @@ import UserRow from "./UserRow";
 
 const AllUsers = () => {
     const [users, refetch] = useUsers();
-    console.log(users)
 
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
