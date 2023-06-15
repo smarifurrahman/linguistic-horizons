@@ -1,5 +1,4 @@
 import EnrolledClass from "./EnrolledClass/EnrolledClass";
-import EnrolledRow from "./EnrolledClass/EnrolledRow";
 import SelectedClass from "./SelectedClass/SelectedClass";
 
 const Student = () => {
