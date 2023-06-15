@@ -8,7 +8,7 @@ const Classes = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('http://localhost:5000/classes/?status=Approved')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

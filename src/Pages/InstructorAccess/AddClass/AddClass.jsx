@@ -21,6 +21,7 @@ const AddClass = () => {
             availableSeats,
             price,
             status: 'Pending',
+            enrolledStudents: 0,
         }
 
         console.log(classInfo);

@@ -68,8 +68,8 @@ const MyClass = () => {
                             <th>Class Information</th>
                             <th>Available Seats</th>
                             <th>Price</th>
-                            <th>Status</th>
                             <th>Enrolled Students</th>
+                            <th>Status</th>
                             <th>Feedback</th>
                             <th>Action</th>
                         </tr>

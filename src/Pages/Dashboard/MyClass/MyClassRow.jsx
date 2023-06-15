@@ -1,7 +1,7 @@
 
 const MyClassRow = ({ aClass, handleUpdate }) => {
 
-    const { classPhoto, className, availableSeats, price, status, feedback } = aClass;
+    const { classPhoto, className, availableSeats, price, enrolledStudents, status, feedback } = aClass;
 
     return (
         <tr>
@@ -19,7 +19,7 @@ const MyClassRow = ({ aClass, handleUpdate }) => {
             </td>
             <td>{availableSeats}</td>
             <td>${price}</td>
-            <td>{status}</td>
+            <td>{enrolledStudents}</td>
             <td>{status}</td>
             <td>{feedback}</td>
             <th>
