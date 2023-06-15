@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ClassRow = ({ aClass, handleApprove, handleDeny, handleFeedback }) => {
 
-    const { _id, classPhoto, className, instructorName, instructorEmail, availableSeats, price, status } = aClass;
+    const { classPhoto, className, instructorName, instructorEmail, availableSeats, price, status } = aClass;
 
     return (
         <tr>
@@ -25,9 +25,9 @@ const ClassRow = ({ aClass, handleApprove, handleDeny, handleFeedback }) => {
             <td>{status}</td>
             <th>
                 <div className="flex flex-col gap-2 w-fit">
-                    <Link onClick={() => handleApprove(_id)} className="btn btn-ghost btn-xs bg-primary-color">Approve</Link>
-                    <button onClick={() => handleDeny(_id)} className="btn btn-ghost btn-xs bg-secondary-color">Deny</button>
-                    <button onClick={() => handleFeedback(_id)} className="btn btn-ghost btn-xs bg-secondary-color">Feedback</button>
+                    <Link onClick={() => handleApprove(aClass)} className="btn btn-ghost btn-xs bg-primary-color">Approve</Link>
+                    <button onClick={() => handleDeny(aClass)} className="btn btn-ghost btn-xs bg-pink-color">Deny</button>
+                    <button onClick={() => handleFeedback(aClass)} className="btn btn-ghost btn-xs bg-secondary-color">Feedback</button>
                 </div>
             </th>
         </tr>

@@ -25,6 +25,7 @@ const AddClass = () => {
             instructorPhoto: user.photoURL,
             availableSeats,
             price,
+            status: 'Pending',
         }
 
         console.log(classInfo);
@@ -40,6 +41,7 @@ const AddClass = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
+                    form.reset();
                     Swal.fire(
                         'Added!',
                         'Your class has been added.',
