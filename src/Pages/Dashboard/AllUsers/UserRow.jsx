@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const UserRow = ({ user, handleAdmin, handleInstructor }) => {
+const UserRow = ({ user, handleMakeAdmin, handleMakeInstructor }) => {
 
     const { _id, name, email, photo, role } = user;
 
@@ -22,8 +22,8 @@ const UserRow = ({ user, handleAdmin, handleInstructor }) => {
             <td>{role}</td>
             <th>
                 <div className="flex flex-col gap-2 w-fit">
-                    <Link onClick={() => handleAdmin(_id)} className="btn btn-ghost btn-xs bg-primary-color">Make Admin</Link>
-                    <button onClick={() => handleInstructor(_id)} className="btn btn-ghost btn-xs bg-secondary-color">Make Instructor</button>
+                    <Link onClick={() => handleMakeAdmin(_id)} className="btn btn-ghost btn-xs bg-primary-color">Make Admin</Link>
+                    <button onClick={() => handleMakeInstructor(_id)} className="btn btn-ghost btn-xs bg-secondary-color">Make Instructor</button>
                 </div>
             </th>
         </tr>

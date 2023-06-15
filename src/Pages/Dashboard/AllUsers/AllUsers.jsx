@@ -6,40 +6,45 @@ const AllUsers = () => {
     const [users, refetch] = useUsers();
     console.log(users)
 
-    const handleAdmin = id => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                fetch(`http://localhost:5000/seletedClasses/${id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.deletedCount > 0) {
-                            Swal.fire(
-                                'Deleted!',
-                                'this toy has been deleted.',
-                                'success'
-                            )
-                            refetch();
-                        }
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
                     })
-            }
-        });
+                }
+            })
     }
 
 
-    const handleInstructor = () => {
-        console.log('Clicked');
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: `${user.name} is an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
     return (
@@ -63,8 +68,8 @@ const AllUsers = () => {
                             users.map(user => <UserRow
                                 key={user._id}
                                 user={user}
-                                handleAdmin={handleAdmin}
-                                handleInstructor={handleInstructor}
+                                handleMakeAdmin={handleMakeAdmin}
+                                handleMakeInstructor={handleMakeInstructor}
                             ></UserRow>)
                         }
                     </tbody>
