@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import SelectedRow from "./SelectedRow";
 import useSelectedClasses from "../../../../hooks/useSelectedClass";
@@ -10,20 +10,21 @@ const SelectedClass = () => {
 
     const [userInfo, refetch] = useSelectedClasses();
 
-    if (userInfo.selectedClasses) {
-        const ids = userInfo.selectedClasses;
-        ids.map(async id => {
-            // const res = await fetch(`http://localhost:5000/classes/${id}`);
-            // const data = await res.json();
-            // setClasses([...classes, data]);
-
-            fetch(`http://localhost:5000/classes/${id}`)
+    useEffect(() => {
+        if (userInfo.selectedClasses) {
+            const ids = userInfo.selectedClasses;
+            console.log(ids);
+            fetch(`http://localhost:5000/selected-classes`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(ids)
+            })
                 .then(res => res.json())
                 .then(data => {
-                    setClasses([...classes, data]);
+                    setClasses(data);
                 })
-        })
-    }
+        }
+    }, [userInfo.selectedClasses])
 
     console.log(classes)
 
