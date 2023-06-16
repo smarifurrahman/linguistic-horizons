@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUsers, FaPlusSquare, FaChalkboardTeacher, FaEdit, FaCheckCircle, FaCartArrowDown, FaBookOpen, FaBookReader } from 'react-icons/fa';
+import { FaHome, FaUsers, FaPlusSquare, FaChalkboardTeacher, FaEdit, FaCheckCircle, FaCartArrowDown, FaBookOpen, FaBookReader } from 'react-icons/fa';
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 import { Helmet } from "react-helmet-async";
@@ -32,24 +32,25 @@ const Dashboard = () => {
 
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/instructorHome"><FaHome></FaHome> Instructor Home</NavLink></li>
-                            <li><NavLink to="/dashboard/instructorHome"><FaHome></FaHome> Students Home</NavLink></li>
-                            <li><NavLink to="/dashboard/myclasses"> <FaBookReader></FaBookReader> My Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/addClass"> <FaPlusSquare></FaPlusSquare> Add a Class</NavLink></li>
+                            <li><NavLink to="/dashboard/admin-home"><FaHome></FaHome> Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                             <li><NavLink to="/dashboard/manageclasses"><FaBookOpen></FaBookOpen> Manage Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/selectedclass"><FaCartArrowDown></FaCartArrowDown> Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/enrolledclass"><FaCheckCircle></FaCheckCircle> Enrolled Classes</NavLink></li>
-                        </>
-                            : <>
-                                <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
-                                <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Enrolled</NavLink></li>
-                                <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
-                                <li><NavLink to="/dashboard/myclass"><FaShoppingCart></FaShoppingCart> My Class</NavLink></li>
-                            </>
-                    }
 
+
+                        </>
+                            : isInstructor ? <>
+                                <li><NavLink to="/dashboard/instructor-home"><FaHome></FaHome> Instructor Home</NavLink></li>
+                                <li><NavLink to="/dashboard/myclasses"> <FaBookReader></FaBookReader> My Classes</NavLink></li>
+                                <li><NavLink to="/dashboard/addClass"> <FaPlusSquare></FaPlusSquare> Add a Class</NavLink></li>
+                            </>
+                                : isStudent ? <>
+                                    <li><NavLink to="/dashboard/students-home"><FaHome></FaHome> Students Home</NavLink></li>
+                                    <li><NavLink to="/dashboard/selectedclass"><FaCartArrowDown></FaCartArrowDown> Selected Classes</NavLink></li>
+                                    <li><NavLink to="/dashboard/enrolledclass"><FaCheckCircle></FaCheckCircle> Enrolled Classes</NavLink></li>
+                                </>
+                                    : <>
+                                    </>
+                    }
 
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>

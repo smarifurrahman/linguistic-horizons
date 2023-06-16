@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import PageHeader from "../../Shared/PageHeader/PageHeader";
 
-const InstructorHome = () => {
+const AdminHome = () => {
     return (
         <div>
             <Helmet>
-                <title>Linguistic Horizons | Instructor Home</title>
+                <title>Linguistic Horizons | Admin Home</title>
             </Helmet>
-            <PageHeader title="Instructor Home"></PageHeader>
+            <PageHeader title="Admin Home"></PageHeader>
         </div>
     );
 };
 
-export default InstructorHome;
+export default AdminHome;
