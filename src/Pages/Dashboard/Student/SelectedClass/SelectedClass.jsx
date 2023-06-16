@@ -60,7 +60,31 @@ const SelectedClass = () => {
     }
 
     const handlePay = aClass => {
-        console.log(aClass);
+        fetch(`http://localhost:5000/classes/enrolled/${aClass._id}?email=${user.email}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${aClass.className} is Enrolled!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                else if (data.enrolled) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'warning',
+                        title: `${aClass.className} is ${data.message}!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
     return (
