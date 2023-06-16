@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
 
 const AddClass = () => {
     const [error, setError] = useState('');
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 

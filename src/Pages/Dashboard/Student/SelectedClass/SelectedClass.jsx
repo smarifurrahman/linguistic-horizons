@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import SelectedRow from "./SelectedRow";
 import useSelectedClasses from "../../../../hooks/useSelectedClass";
-import { AuthContext } from "../../../../Providers/AuthProvider";
+import useAuth from "../../../../hooks/useAuth";
 
 const SelectedClass = () => {
     const [classes, setClasses] = useState([]);
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
 
     const [userInfo, refetch] = useSelectedClasses();
 

@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from './useAxiosSecure';
-import { useContext } from 'react';
-import { AuthContext } from '../Providers/AuthProvider';
+import useAuth from './useAuth';
 
 const useUsers = () => {
     const [axiosSecure] = useAxiosSecure();
-    const { loading } = useContext(AuthContext)
+    const { loading } = useAuth()
 
     const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],

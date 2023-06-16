@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "../Shared/Spinner/Spinner";
 import PageHeader from "../Shared/PageHeader/PageHeader";
 import ClassCard from "./ClassCard/ClassCard";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
 
     useEffect(() => {
         fetch('http://localhost:5000/classes/?status=Approved')

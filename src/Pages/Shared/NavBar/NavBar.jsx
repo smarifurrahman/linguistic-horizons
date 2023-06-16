@@ -1,11 +1,10 @@
 
 import { Link } from "react-router-dom";
 import ActiveRoute from "../ActiveRoute/ActiveRoute";
-import { useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import useAuth from "../../../hooks/useAuth";
 
 const NavBar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuth();
 
     const navItems = <>
         <li><ActiveRoute to="/">Home</ActiveRoute></li>

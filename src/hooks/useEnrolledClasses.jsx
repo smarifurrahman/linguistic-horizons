@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import { useContext } from 'react';
-import { AuthContext } from '../Providers/AuthProvider';
+import useAuth from './useAuth';
 
 const useEnrolledClasses = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
 
     const { refetch, isLoading: loading, data: classes = [] } = useQuery({
         queryKey: ['email'],

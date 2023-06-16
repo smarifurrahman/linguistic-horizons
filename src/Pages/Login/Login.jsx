@@ -1,10 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -15,7 +15,7 @@ const Login = () => {
         setShowPass(!showPass);
     };
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
