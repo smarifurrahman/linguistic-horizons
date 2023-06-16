@@ -1,15 +1,12 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import Spinner from "../../../Shared/Spinner/Spinner";
 import SelectedRow from "./SelectedRow";
 import useSelectedClasses from "../../../../hooks/useSelectedClass";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 
 const SelectedClass = () => {
     const [classes, setClasses] = useState([]);
-    const [loading, setLoading] = useState(false);
     const { user } = useContext(AuthContext);
-
 
     const [userInfo, refetch] = useSelectedClasses();
 
@@ -48,6 +45,7 @@ const SelectedClass = () => {
                     .then(data => {
                         console.log(data)
                         if (data.modifiedCount) {
+                            refetch()
                             Swal.fire({
                                 position: 'center',
                                 icon: 'success',
@@ -63,11 +61,6 @@ const SelectedClass = () => {
 
     const handlePay = aClass => {
         console.log(aClass);
-    }
-
-
-    if (loading) {
-        return <Spinner></Spinner>;
     }
 
     return (
