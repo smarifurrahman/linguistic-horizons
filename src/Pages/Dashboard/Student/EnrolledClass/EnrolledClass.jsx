@@ -1,6 +1,8 @@
+import { Helmet } from "react-helmet-async";
 import useEnrolledClasses from "../../../../hooks/useEnrolledClasses";
 import Spinner from "../../../Shared/Spinner/Spinner";
 import EnrolledRow from "./EnrolledRow";
+import PageHeader from "../../../Shared/PageHeader/PageHeader";
 
 
 const EnrolledClass = () => {
@@ -14,9 +16,11 @@ const EnrolledClass = () => {
 
     return (
         <div className='w-[85%] mx-auto'>
-            <div className='text-center py-14'>
-                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>Enrolled Classes</h2>
-            </div>
+            <Helmet>
+                <title>Linguistic Horizons | Enrolled Classes</title>
+            </Helmet>
+            <PageHeader title="Enrolled Classes"></PageHeader>
+
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}

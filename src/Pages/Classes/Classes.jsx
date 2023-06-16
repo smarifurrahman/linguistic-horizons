@@ -5,6 +5,7 @@ import ClassCard from "./ClassCard/ClassCard";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
@@ -59,6 +60,9 @@ const Classes = () => {
 
     return (
         <div className='w-[85%] mx-auto'>
+            <Helmet>
+                <title>Linguistic Horizons | Classes</title>
+            </Helmet>
             <PageHeader title="Classes"></PageHeader>
 
             <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6'>

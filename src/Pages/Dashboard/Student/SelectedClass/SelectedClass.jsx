@@ -4,6 +4,8 @@ import SelectedRow from "./SelectedRow";
 import useSelectedClasses from "../../../../hooks/useSelectedClass";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
+import PageHeader from "../../../Shared/PageHeader/PageHeader";
 
 const SelectedClass = () => {
     const [classes, setClasses] = useState([]);
@@ -89,9 +91,11 @@ const SelectedClass = () => {
 
     return (
         <div className='w-[85%] mx-auto'>
-            <div className='text-center py-14'>
-                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>Selected Classes</h2>
-            </div>
+            <Helmet>
+                <title>Linguistic Horizons | Selected Classes</title>
+            </Helmet>
+            <PageHeader title="Selected Classes"></PageHeader>
+            
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}

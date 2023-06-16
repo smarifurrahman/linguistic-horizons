@@ -2,6 +2,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
     const [error, setError] = useState('');
@@ -53,6 +54,9 @@ const AddClass = () => {
 
     return (
         <div className="hero min-h-screen">
+            <Helmet>
+                <title>Linguistic Horizons | Add a Class</title>
+            </Helmet>
             <div className="hero-content flex-col ">
                 <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(onsubmit)} className="card-body p-12 pb-0 mb-6 sm:w-[600px]">

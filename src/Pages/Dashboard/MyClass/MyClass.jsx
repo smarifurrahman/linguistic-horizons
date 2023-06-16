@@ -3,6 +3,8 @@ import useMyClasses from "../../../hooks/useMyClasses";
 import MyClassRow from "./MyClassRow";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import PageHeader from "../../Shared/PageHeader/PageHeader";
 
 const MyClass = () => {
     const [classes, refetch] = useMyClasses();
@@ -57,9 +59,10 @@ const MyClass = () => {
 
     return (
         <div className='w-[85%] mx-auto'>
-            <div className='text-center py-14'>
-                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>My Classes</h2>
-            </div>
+            <Helmet>
+                <title>Linguistic Horizons | My Classes</title>
+            </Helmet>
+            <PageHeader title="My Classes"></PageHeader>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}

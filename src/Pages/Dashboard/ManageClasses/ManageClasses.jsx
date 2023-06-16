@@ -4,6 +4,8 @@ import ClassRow from "./ClassRow";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import PageHeader from "../../Shared/PageHeader/PageHeader";
+import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
     const [classes, refetch] = useClasses();
@@ -83,9 +85,11 @@ const ManageClasses = () => {
 
     return (
         <div className='w-[85%] mx-auto'>
-            <div className='text-center py-14'>
-                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>Manage Classes</h2>
-            </div>
+            <Helmet>
+                <title>Linguistic Horizons | Manage Classes</title>
+            </Helmet>
+            <PageHeader title="Manage Classes"></PageHeader>
+
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}

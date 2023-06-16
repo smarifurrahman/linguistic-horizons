@@ -2,6 +2,8 @@ import Swal from "sweetalert2";
 import useUsers from "../../../hooks/useUsers";
 import UserRow from "./UserRow";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
+import PageHeader from "../../Shared/PageHeader/PageHeader";
 
 const ManageUsers = () => {
     const [users, refetch] = useUsers();
@@ -46,9 +48,11 @@ const ManageUsers = () => {
 
     return (
         <div className='w-[85%] mx-auto'>
-            <div className='text-center py-14'>
-                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>Manage Users</h2>
-            </div>
+            <Helmet>
+                <title>Linguistic Horizons | Manage Users</title>
+            </Helmet>
+            <PageHeader title="Manage Users"></PageHeader>
+
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
