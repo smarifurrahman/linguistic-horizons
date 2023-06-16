@@ -1,28 +1,15 @@
 import useEnrolledClasses from "../../../../hooks/useEnrolledClasses";
+import Spinner from "../../../Shared/Spinner/Spinner";
 import EnrolledRow from "./EnrolledRow";
 
 
 const EnrolledClass = () => {
 
-    const [classes] = useEnrolledClasses();
+    const [classes, loading] = useEnrolledClasses();
 
-    // useEffect(() => {
-    //     if (userInfo.selectedClasses) {
-    //         const ids = userInfo.selectedClasses;
-    //         console.log(ids);
-    //         fetch(`http://localhost:5000/selected-classes`, {
-    //             method: 'POST',
-    //             headers: { 'content-type': 'application/json' },
-    //             body: JSON.stringify(ids)
-    //         })
-    //             .then(res => res.json())
-    //             .then(data => {
-    //                 setClasses(data);
-    //             })
-    //     }
-    // }, [userInfo.selectedClasses])
-
-    console.log(classes)
+    if (loading) {
+        return <Spinner></Spinner>
+    }
 
     return (
         <div className='w-[85%] mx-auto'>
