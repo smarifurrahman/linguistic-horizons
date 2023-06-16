@@ -16,7 +16,7 @@ const SelectedClass = () => {
         if (userInfo.selectedClasses) {
             const ids = userInfo.selectedClasses;
             console.log(ids);
-            fetch(`https://linguistic-horizons-server.vercel.app/selected-classes`, {
+            fetch(`http://localhost:5000/selected-classes`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(ids)
