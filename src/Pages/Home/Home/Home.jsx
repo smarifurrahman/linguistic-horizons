@@ -1,5 +1,6 @@
 import Popular from "../Popular/Popular";
 import Slider from "../Slider/Slider";
+import Summary from "../Summary/Summary";
 import PopularInstructors from "./PopularInstructors/PopularInstructors";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
             <Slider></Slider>
             <Popular></Popular>
             <PopularInstructors></PopularInstructors>
+            <Summary></Summary>
         </div>
     );
 };
