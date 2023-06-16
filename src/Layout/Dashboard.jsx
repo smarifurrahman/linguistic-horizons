@@ -7,7 +7,7 @@ const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    console.log('admin:', isAdmin, 'instructor:', isInstructor);
+    console.log('isAdmin:', isAdmin, '; isInstructor:', isInstructor);
 
     return (
         <div className="drawer lg:drawer-open">

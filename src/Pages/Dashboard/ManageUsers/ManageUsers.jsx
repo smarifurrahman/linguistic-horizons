@@ -1,15 +1,15 @@
 import Swal from "sweetalert2";
 import useUsers from "../../../hooks/useUsers";
 import UserRow from "./UserRow";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
     const [users, refetch] = useUsers();
+    const [axiosSecure] = useAxiosSecure();
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
+        axiosSecure.patch(`/users/admin/${user._id}`)
+            .then(res => res.data)
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
