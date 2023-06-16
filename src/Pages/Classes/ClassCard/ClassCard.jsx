@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 
-const ClassCard = ({ singleClass }) => {
+const ClassCard = ({ singleClass, handleSelectClass }) => {
 
-    const { classPhoto, className, instructorName, availableSeats, price, _id } = singleClass;
+    const { classPhoto, className, instructorName, availableSeats, price } = singleClass;
     // todo: check this
     return (
         <div className="card min-w-[200px] bg-base-100 shadow-xl">
@@ -17,7 +16,7 @@ const ClassCard = ({ singleClass }) => {
                 <h4 className='font-semibold mt-4'>Price: ${price}</h4>
 
                 <div className="card-actions justify-end">
-                    <Link to={`/classes/${_id}`} className="btn btn-ghost btn-xs bg-primary-color">View Details</Link>
+                    <button onClick={() => handleSelectClass(singleClass)} className="btn btn-ghost btn-xs bg-primary-color">Select Class</button>
                 </div>
             </div>
         </div>
