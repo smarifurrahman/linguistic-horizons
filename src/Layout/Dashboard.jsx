@@ -1,14 +1,16 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBook, FaUsers, FaPlusSquare, FaAtlas } from 'react-icons/fa';
+import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUsers, FaPlusSquare, FaChalkboardTeacher, FaEdit, FaCheckCircle, FaCartArrowDown, FaBookOpen, FaBookReader } from 'react-icons/fa';
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 import { Helmet } from "react-helmet-async";
+import useStudent from "../hooks/useStudent";
 const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    console.log('isAdmin:', isAdmin, '; isInstructor:', isInstructor);
+    const [isStudent] = useStudent();
+    console.log('isAdmin:', isAdmin, '; isInstructor:', isInstructor, '; isStudent:', isStudent);
 
     return (
         <div className="drawer lg:drawer-open">
@@ -31,13 +33,14 @@ const Dashboard = () => {
                     {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/instructorHome"><FaWallet></FaWallet> Instructor Home</NavLink></li>
-                            <li><NavLink to="/dashboard/myclasses"> <FaAtlas></FaAtlas> My Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/instructorHome"><FaHome></FaHome> Instructor Home</NavLink></li>
+                            <li><NavLink to="/dashboard/instructorHome"><FaHome></FaHome> Students Home</NavLink></li>
+                            <li><NavLink to="/dashboard/myclasses"> <FaBookReader></FaBookReader> My Classes</NavLink></li>
                             <li><NavLink to="/dashboard/addClass"> <FaPlusSquare></FaPlusSquare> Add a Class</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
-                            <li><NavLink to="/dashboard/manageclasses"><FaBook></FaBook> Manage Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/selectedclass"><FaBook></FaBook> Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/enrolledclass"><FaBook></FaBook> Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manageclasses"><FaBookOpen></FaBookOpen> Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/selectedclass"><FaCartArrowDown></FaCartArrowDown> Selected Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/enrolledclass"><FaCheckCircle></FaCheckCircle> Enrolled Classes</NavLink></li>
                         </>
                             : <>
                                 <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
@@ -50,8 +53,8 @@ const Dashboard = () => {
 
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
-                    <li><NavLink to="/classes"><FaHome></FaHome> Classes</NavLink> </li>
-                    <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
+                    <li><NavLink to="/classes"><FaEdit></FaEdit> Classes</NavLink> </li>
+                    <li><NavLink to="/instructors"><FaChalkboardTeacher></FaChalkboardTeacher> Instructors</NavLink> </li>
                 </ul>
 
             </div>
