@@ -1,10 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBook, FaUsers, FaPlusSquare, FaAtlas } from 'react-icons/fa';
+import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
 
-    // todo load admin data from server
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="drawer lg:drawer-open">
