@@ -1,27 +1,26 @@
-import { useState } from "react";
-import useSelectedClasses from "../../../../hooks/useSelectedClass";
+import useEnrolledClasses from "../../../../hooks/useEnrolledClasses";
 import EnrolledRow from "./EnrolledRow";
 
 
 const EnrolledClass = () => {
-    const [classes, setClasses] = useState([]);
 
-    const [userInfo] = useSelectedClasses();
+    const [classes] = useEnrolledClasses();
 
-    if (userInfo.selectedClasses) {
-        const ids = userInfo.selectedClasses;
-        ids.map(async id => {
-            // const res = await fetch(`http://localhost:5000/classes/${id}`);
-            // const data = await res.json();
-            // setClasses([...classes, data]);
-
-            fetch(`http://localhost:5000/classes/${id}`)
-                .then(res => res.json())
-                .then(data => {
-                    setClasses([...classes, data]);
-                })
-        })
-    }
+    // useEffect(() => {
+    //     if (userInfo.selectedClasses) {
+    //         const ids = userInfo.selectedClasses;
+    //         console.log(ids);
+    //         fetch(`http://localhost:5000/selected-classes`, {
+    //             method: 'POST',
+    //             headers: { 'content-type': 'application/json' },
+    //             body: JSON.stringify(ids)
+    //         })
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 setClasses(data);
+    //             })
+    //     }
+    // }, [userInfo.selectedClasses])
 
     console.log(classes)
 

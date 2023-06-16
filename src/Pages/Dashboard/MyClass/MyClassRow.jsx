@@ -19,7 +19,7 @@ const MyClassRow = ({ aClass, handleUpdate }) => {
             </td>
             <td>{availableSeats}</td>
             <td>${price}</td>
-            <td>{enrolledStudents}</td>
+            <td>{enrolledStudents ? enrolledStudents.length : 0}</td>
             <td>{status}</td>
             <td>{feedback}</td>
             <th>

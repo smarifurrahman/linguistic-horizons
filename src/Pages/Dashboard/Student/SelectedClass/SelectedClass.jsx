@@ -68,6 +68,7 @@ const SelectedClass = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
+                    refetch()
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
