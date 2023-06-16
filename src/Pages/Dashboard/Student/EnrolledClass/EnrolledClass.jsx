@@ -6,6 +6,7 @@ import EnrolledRow from "./EnrolledRow";
 const EnrolledClass = () => {
 
     const [classes, loading] = useEnrolledClasses();
+    console.log(classes);
 
     if (loading) {
         return <Spinner></Spinner>
@@ -29,7 +30,7 @@ const EnrolledClass = () => {
                     </thead>
                     <tbody>
                         {
-                            classes.map(aClass => <EnrolledRow
+                            Array.isArray(classes) && classes?.map(aClass => <EnrolledRow
                                 key={aClass._id}
                                 aClass={aClass}
                             ></EnrolledRow>)
