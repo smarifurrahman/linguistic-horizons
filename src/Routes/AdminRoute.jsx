@@ -1,21 +1,21 @@
 import { Navigate, useLocation } from "react-router";
 import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
 import Spinner from "../Pages/Shared/Spinner/Spinner";
-import useInstructor from "../hooks/useInstructor";
 
-const InstructorRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
     const { user, loading } = useAuth();
-    const [isInstructor, isInstructorLoading] = useInstructor();
+    const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
 
-    if(loading || isInstructorLoading){
+    if(loading || isAdminLoading){
         return <Spinner></Spinner>
     }
 
-    if (user && isInstructor) {
+    if (user && isAdmin) {
         return children;
     }
     return <Navigate to="/" state={{from: location}} replace></Navigate>
 };
 
-export default InstructorRoute;
+export default AdminRoute;
