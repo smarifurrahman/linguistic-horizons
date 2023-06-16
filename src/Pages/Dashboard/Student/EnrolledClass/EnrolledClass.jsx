@@ -1,39 +1,34 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../../Providers/AuthProvider";
-import Spinner from "../../../Shared/Spinner/Spinner";
+import { useState } from "react";
+import useSelectedClasses from "../../../../hooks/useSelectedClass";
 import EnrolledRow from "./EnrolledRow";
+
 
 const EnrolledClass = () => {
     const [classes, setClasses] = useState([]);
-    const { user } = useContext(AuthContext);
-    const [loading, setLoading] = useState(true);
 
-    // const url = `http://localhost:5000/enrolledClasses?email=${user.email}`;
-    const url = `http://localhost:5000/classes`;
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setClasses(data);
-                setLoading(false)
-            })
-            .catch(error => {
-                console.error(error);
-                setLoading(false);
-            })
-    }, [url])
+    const [userInfo] = useSelectedClasses();
 
-    console.log(classes);
+    if (userInfo.selectedClasses) {
+        const ids = userInfo.selectedClasses;
+        ids.map(async id => {
+            // const res = await fetch(`http://localhost:5000/classes/${id}`);
+            // const data = await res.json();
+            // setClasses([...classes, data]);
 
-
-    if (loading) {
-        return <Spinner></Spinner>;
+            fetch(`http://localhost:5000/classes/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setClasses([...classes, data]);
+                })
+        })
     }
+
+    console.log(classes)
 
     return (
         <div className='w-[85%] mx-auto'>
             <div className='text-center py-14'>
-                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>Enrolled Class</h2>
+                <h2 className='text-dark hover:text-primary-color text-4xl font-bold mb-3'>Enrolled Classes</h2>
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -41,17 +36,16 @@ const EnrolledClass = () => {
                     <thead>
                         <tr>
                             <th>Class Information</th>
+                            <th>Instructor Name</th>
+                            <th>Instructor Email</th>
                             <th>Price</th>
-                            <th>Available Seats</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            classes.map((aClass, index) => <EnrolledRow
+                            classes.map(aClass => <EnrolledRow
                                 key={aClass._id}
                                 aClass={aClass}
-                                index={index}
                             ></EnrolledRow>)
                         }
                     </tbody>
