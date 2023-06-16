@@ -2,9 +2,12 @@ import { NavLink, Outlet } from "react-router-dom";
 
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBook, FaUsers, FaPlusSquare, FaAtlas } from 'react-icons/fa';
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    console.log('admin:', isAdmin, 'instructor:', isInstructor);
 
     return (
         <div className="drawer lg:drawer-open">

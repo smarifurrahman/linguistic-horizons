@@ -64,19 +64,6 @@ const SignUp = () => {
 
     };
 
-    // const passwordRef = useRef(null);
-    // const [disabled, setDisabled] = useState(false);
-
-    // const handleConfirmPassword = (e) => {
-    //     const password = e.target.value;
-    //     if (password !== passwordRef) {
-    //         setDisabled(false);
-    //     }
-    //     else {
-    //         setDisabled(true)
-    //     }
-    // }
-
     return (
         <div className="hero min-h-screen">
             <Helmet>
