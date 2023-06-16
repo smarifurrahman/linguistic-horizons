@@ -9,6 +9,7 @@ const ManageClasses = () => {
     const [clickedClass, setClickedClass] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
+    console.log(classes)
     const handleApprove = aClass => {
         fetch(`http://localhost:5000/classes/approved/${aClass._id}`, {
             method: 'PATCH'
