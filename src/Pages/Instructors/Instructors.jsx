@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import Spinner from "../Shared/Spinner/Spinner";
 import Instructor from "./Instructor/Instructor";
 import PageHeader from "../Shared/PageHeader/PageHeader";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
+        axiosSecure.get('/users')
+            .then(res => res.data)
             .then(data => {
                 console.log(data);
                 setInstructors(data);
@@ -19,7 +21,7 @@ const Instructors = () => {
                 console.error(error);
                 setLoading(false);
             })
-    }, [])
+    }, [axiosSecure])
 
 
     if (loading) {

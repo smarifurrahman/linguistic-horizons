@@ -27,10 +27,8 @@ const ManageUsers = () => {
 
 
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
+        axiosSecure.patch(`/users/instructor/${user._id}`)
+            .then(res => res.data)
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {

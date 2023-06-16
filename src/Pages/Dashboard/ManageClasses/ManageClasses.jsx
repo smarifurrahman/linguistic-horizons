@@ -3,18 +3,18 @@ import useClasses from "../../../hooks/useClasses";
 import ClassRow from "./ClassRow";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageClasses = () => {
     const [classes, refetch] = useClasses();
     const [clickedClass, setClickedClass] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [axiosSecure] = useAxiosSecure();
 
     console.log(classes)
     const handleApprove = aClass => {
-        fetch(`http://localhost:5000/classes/approved/${aClass._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
+        axiosSecure.patch(`/classes/approved/${aClass._id}`)
+            .then(res => res.data)
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
@@ -31,10 +31,8 @@ const ManageClasses = () => {
     }
 
     const handleDeny = aClass => {
-        fetch(`http://localhost:5000/classes/denied/${aClass._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
+        axiosSecure.patch(`/classes/denied/${aClass._id}`)
+            .then(res => res.data)
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {

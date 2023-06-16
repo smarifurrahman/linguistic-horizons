@@ -3,10 +3,12 @@ import Swal from "sweetalert2";
 import SelectedRow from "./SelectedRow";
 import useSelectedClasses from "../../../../hooks/useSelectedClass";
 import useAuth from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const SelectedClass = () => {
     const [classes, setClasses] = useState([]);
     const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
 
     const [userInfo, refetch] = useSelectedClasses();
 
@@ -39,10 +41,8 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/classes/selected/delete/${aClass._id}?email=${user.email}`, {
-                    method: 'PATCH'
-                })
-                    .then(res => res.json())
+                axiosSecure.patch(`/classes/selected/delete/${aClass._id}?email=${user.email}`)
+                    .then(res => res.data)
                     .then(data => {
                         console.log(data)
                         if (data.modifiedCount) {
@@ -61,10 +61,8 @@ const SelectedClass = () => {
     }
 
     const handlePay = aClass => {
-        fetch(`http://localhost:5000/classes/enrolled/${aClass._id}?email=${user.email}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
+        axiosSecure.patch(`/classes/enrolled/${aClass._id}?email=${user.email}`)
+            .then(res => res.data)
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
