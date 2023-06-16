@@ -29,6 +29,7 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
+                    <p className="text-xl font-semibold py-5 px-4">Linguistic Horizons</p>
 
                     {
                         isAdmin ? <>

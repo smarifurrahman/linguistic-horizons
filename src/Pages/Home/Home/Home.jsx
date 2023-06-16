@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import Popular from "../Popular/Popular";
+import PopularClasses from "../PopularClasses/PopularClasses";
 import Slider from "../Slider/Slider";
 import Summary from "../Summary/Summary";
-import PopularInstructors from "./PopularInstructors/PopularInstructors";
+import PopularInstructors from "../PopularInstructors/PopularInstructors";
 
 const Home = () => {
     return (
@@ -11,7 +11,7 @@ const Home = () => {
                 <title>Linguistic Horizons | Home</title>
             </Helmet>
             <Slider></Slider>
-            <Popular></Popular>
+            <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
             <Summary></Summary>
         </div>
