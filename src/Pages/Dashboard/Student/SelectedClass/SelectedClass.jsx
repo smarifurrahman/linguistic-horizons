@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import Spinner from "../../../Shared/Spinner/Spinner";
 import SelectedRow from "./SelectedRow";
 import useSelectedClasses from "../../../../hooks/useSelectedClass";
+import { AuthContext } from "../../../../Providers/AuthProvider";
 
 const SelectedClass = () => {
     const [classes, setClasses] = useState([]);
     const [loading, setLoading] = useState(false);
+    const { user } = useContext(AuthContext);
+
 
     const [userInfo, refetch] = useSelectedClasses();
 
@@ -25,36 +28,37 @@ const SelectedClass = () => {
         })
     }
 
-    const handleDelete = id => {
-        // Swal.fire({
-        //     title: 'Are you sure?',
-        //     text: "You won't be able to revert this!",
-        //     icon: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#3085d6',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Yes, delete it!'
-        // }).then((result) => {
-        //     if (result.isConfirmed) {
+    console.log(classes)
 
-        //         fetch(`http://localhost:5000/seletedClasses/${id}`, {
-        //             method: 'DELETE'
-        //         })
-        //             .then(res => res.json())
-        //             .then(data => {
-        //                 console.log(data);
-        //                 if (data.deletedCount > 0) {
-        //                     Swal.fire(
-        //                         'Deleted!',
-        //                         'this toy has been deleted.',
-        //                         'success'
-        //                     )
-        //                     const remaining = classes.filter(aClass => aClass._id !== id);
-        //                     setClasses(remaining);
-        //                 }
-        //             })
-        //     }
-        // });
+    const handleDelete = aClass => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/classes/selected/delete/${aClass._id}?email=${user.email}`, {
+                    method: 'PATCH'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.modifiedCount) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: `${aClass.className} is Deleted!`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
+            }
+        });
     }
 
     const handlePay = aClass => {

@@ -1,7 +1,5 @@
 
 const SelectedRow = ({ aClass, handleDelete, handlePay, }) => {
-    console.log(aClass)
-
     const { classPhoto, className, instructorName, instructorEmail, availableSeats, price, status } = aClass;
 
     return (
