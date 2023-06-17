@@ -15,7 +15,7 @@ const Slider = () => {
                         <div className='w-3/4 md:w-1/2'>
                             <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold font-playfair'>Unlock Your Potential with Linguistic Horizons</h1>
                             <p className='font-medium my-5'>Embark on an Unforgettable Linguistic Journey: Discover New Worlds, Forge Connections, and Master Multiple Languages with Linguistic Horizons!</p>
-                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-6">
+                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark px-6">
                                 View Classes
                                 <span className='ml-2'>
                                     <HiArrowRight />
@@ -36,7 +36,7 @@ const Slider = () => {
                         <div className='w-3/4 md:w-1/2'>
                             <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold font-playfair'>Unlock Your Potential with Linguistic Horizons</h1>
                             <p className='font-medium my-5'>Embark on an Unforgettable Linguistic Journey: Discover New Worlds, Forge Connections, and Master Multiple Languages with Linguistic Horizons!</p>
-                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-6">
+                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark px-6">
                                 View Classes
                                 <span className='ml-2'>
                                     <HiArrowRight />
@@ -57,7 +57,7 @@ const Slider = () => {
                         <div className='w-3/4 md:w-1/2'>
                             <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold font-playfair'>Unlock Your Potential with Linguistic Horizons</h1>
                             <p className='font-medium my-5'>Embark on an Unforgettable Linguistic Journey: Discover New Worlds, Forge Connections, and Master Multiple Languages with Linguistic Horizons!</p>
-                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-6">
+                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark px-6">
                                 View Classes
                                 <span className='ml-2'>
                                     <HiArrowRight />
@@ -78,7 +78,7 @@ const Slider = () => {
                         <div className='w-3/4 md:w-1/2'>
                             <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold font-playfair'>Unlock Your Potential with Linguistic Horizons</h1>
                             <p className='font-medium my-5'>Embark on an Unforgettable Linguistic Journey: Discover New Worlds, Forge Connections, and Master Multiple Languages with Linguistic Horizons!</p>
-                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-6">
+                            <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark px-6">
                                 View Classes
                                 <span className='ml-2'>
                                     <HiArrowRight />

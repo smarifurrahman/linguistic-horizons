@@ -14,10 +14,6 @@ const PopularClassCard = ({ singleClass }) => {
                 <h4 className='font-semibold mt-4'>Instructor: {instructorName}</h4>
                 <h4 className='font-semibold mt-4'>Enrolled Students: {enrolledStudents ? enrolledStudents.length : 0}</h4>
                 <h4 className='font-semibold mt-4'>Available Seats: {availableSeats}</h4>
-
-                {/* <div className="card-actions justify-end">
-                    <button onClick={() => handleSelectClass(singleClass)} className="btn btn-ghost btn-xs bg-primary-color">Select Class</button>
-                </div> */}
             </div>
         </div>
     );

@@ -20,9 +20,8 @@ const Dashboard = () => {
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-start mt-5">
                 {/* Page content here */}
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden mr-auto ml-16 mt-4 bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark">Open Menu</label>
                 <Outlet></Outlet>
-
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open Menu</label>
 
             </div>
             <div className="drawer-side">
