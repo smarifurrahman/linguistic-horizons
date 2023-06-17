@@ -10,12 +10,19 @@ const PopularClasses = () => {
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get('/classes/?status=Approved')
+        axiosSecure.get('/classes')
             .then(res => res.data)
             .then(data => {
                 console.log(data);
-                setClasses(data);
-                setLoading(false)
+                if (data.length > 6) {
+                    const newData = data.slice(5, 11);
+                    setClasses(newData);
+                    setLoading(false)
+                }
+                else {
+                    setClasses(data);
+                    setLoading(false)
+                }
             })
             .catch(error => {
                 console.error(error);
