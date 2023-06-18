@@ -1,11 +1,11 @@
 import Swal from "sweetalert2";
-import useClasses from "../../../hooks/useClasses";
 import ClassRow from "./ClassRow";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import PageHeader from "../../Shared/PageHeader/PageHeader";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useClasses from "../../../../hooks/useClasses";
+import PageHeader from "../../../Shared/PageHeader/PageHeader";
 
 const ManageClasses = () => {
     const [classes, refetch] = useClasses();

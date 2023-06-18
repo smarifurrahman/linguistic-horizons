@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../../../hooks/useAuth";
 
 const AddClass = () => {
     const [error, setError] = useState('');

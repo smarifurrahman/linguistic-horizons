@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import PageHeader from "../../Shared/PageHeader/PageHeader";
+import PageHeader from "../../../Shared/PageHeader/PageHeader";
 
 const InstructorHome = () => {
     return (

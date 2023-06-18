@@ -1,9 +1,9 @@
 import Swal from "sweetalert2";
-import useUsers from "../../../hooks/useUsers";
 import UserRow from "./UserRow";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
-import PageHeader from "../../Shared/PageHeader/PageHeader";
+import useUsers from "../../../../hooks/useUsers";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import PageHeader from "../../../Shared/PageHeader/PageHeader";
 
 const ManageUsers = () => {
     const [users, refetch] = useUsers();

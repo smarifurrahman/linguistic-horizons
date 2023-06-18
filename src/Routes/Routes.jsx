@@ -7,17 +7,16 @@ import Login from "../Pages/Login/Login";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import PrivateRoute from "./PrivateRoute";
-import InstructorHome from "../Pages/InstructorAccess/InstructorHome/InstructorHome";
-import AddClass from "../Pages/InstructorAccess/AddClass/AddClass";
-import Student from "../Pages/Dashboard/Student/Student";
 import Dashboard from "../Layout/Dashboard";
-import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
-import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
-import MyClass from "../Pages/Dashboard/MyClass/MyClass";
 import SelectedClass from "../Pages/Dashboard/Student/SelectedClass/SelectedClass";
 import EnrolledClass from "../Pages/Dashboard/Student/EnrolledClass/EnrolledClass";
-import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import StudentHome from "../Pages/Dashboard/Student/StudentHome/StudentHome";
+import InstructorHome from "../Pages/Dashboard/Instructor/InstructorHome/InstructorHome";
+import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import MyClass from "../Pages/Dashboard/Instructor/MyClass/MyClass";
 
 const router = createBrowserRouter([
     {
@@ -63,34 +62,31 @@ const router = createBrowserRouter([
                 path: 'students-home',
                 element: <StudentHome></StudentHome>
             },
+            // admin only routes
             {
-                path: 'manageusers',
+                path: 'manage-users',
                 element: <ManageUsers></ManageUsers>
             },
             {
-                path: 'manageclasses',
+                path: 'manage-classes',
                 element: <ManageClasses></ManageClasses>
             },
-            // instructor routes
+            // instructor only routes
             {
-                path: 'myclasses',
+                path: 'my-classes',
                 element: <MyClass></MyClass>
             },
             {
-                path: 'addClass',
+                path: 'add-class',
                 element: <AddClass></AddClass>
             },
-            // students
+            // students only routes
             {
-                path: 'students',
-                element: <Student></Student>
-            },
-            {
-                path: 'selectedclass',
+                path: 'selected-class',
                 element: <SelectedClass></SelectedClass>
             },
             {
-                path: 'enrolledclass',
+                path: 'enrolled-class',
                 element: <EnrolledClass></EnrolledClass>
             }
         ]

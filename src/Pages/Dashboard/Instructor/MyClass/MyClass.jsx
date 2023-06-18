@@ -1,10 +1,10 @@
 import { useState } from "react";
-import useMyClasses from "../../../hooks/useMyClasses";
-import MyClassRow from "./MyClassRow";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-import PageHeader from "../../Shared/PageHeader/PageHeader";
+import PageHeader from "../../../Shared/PageHeader/PageHeader";
+import useMyClasses from "../../../../hooks/useMyClasses";
+import MyClassRow from "./MyClassRow";
 
 const MyClass = () => {
     const [classes, refetch] = useMyClasses();
