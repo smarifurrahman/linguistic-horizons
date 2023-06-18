@@ -14,8 +14,15 @@ const PopularInstructors = () => {
             .then(res => res.data)
             .then(data => {
                 console.log(data);
-                setInstructors(data);
-                setLoading(false)
+                if (data.length > 4) {
+                    const newData = data.slice(1, 9);
+                    setInstructors(newData);
+                    setLoading(false)
+                }
+                else {
+                    setInstructors(data);
+                    setLoading(false)
+                }
             })
             .catch(error => {
                 console.error(error);

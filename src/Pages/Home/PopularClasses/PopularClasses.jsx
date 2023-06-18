@@ -14,8 +14,8 @@ const PopularClasses = () => {
             .then(res => res.data)
             .then(data => {
                 console.log(data);
-                if (data.length > 6) {
-                    const newData = data.slice(5, 11);
+                if (data.length > 8) {
+                    const newData = data.slice(4, 12);
                     setClasses(newData);
                     setLoading(false)
                 }
