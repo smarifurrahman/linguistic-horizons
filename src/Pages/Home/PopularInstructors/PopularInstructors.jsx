@@ -29,7 +29,7 @@ const PopularInstructors = () => {
 
     return (
         <section className='mt-20 w-[85%] mx-auto'>
-            <SectionHeader heading="Popular Classes" subHeading="Explore our popular classes"></SectionHeader>
+            <SectionHeader heading="Popular Instructors" subHeading="Explore our popular Instructors"></SectionHeader>
             <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6'>
                 {
                     instructors.map((instructor) => <PopularInstructorsCard

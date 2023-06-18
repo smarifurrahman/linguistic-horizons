@@ -7,10 +7,10 @@ const useEnrolledClasses = () => {
     const { user, loading: authLoading } = useAuth();
 
     const { refetch, isLoading: loading, data: classes = [] } = useQuery({
-        queryKey: ['email'],
-        enabled: !authLoading,
+        queryKey: ['email1', user?.email],
+        enabled: !authLoading && !!user?.email,
         queryFn: async () => {
-            const res = await axiosSecure(`/enrolled-classes/?email=${user.email}`)
+            const res = await axiosSecure(`/enrolled-classes/?email=${user?.email}`)
             return res.data;
         },
     })

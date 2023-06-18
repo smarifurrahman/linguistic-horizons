@@ -7,10 +7,10 @@ const useSelectedClasses = () => {
     const [axiosSecure] = useAxiosSecure();
 
     const { refetch, data: userInfo = [] } = useQuery({
-        queryKey: ['email'],
+        queryKey: ['email', user?.email],
         enabled: !authLoading,
         queryFn: async () => {
-            const res = await axiosSecure(`/users/${user.email}`)
+            const res = await axiosSecure(`/users/${user?.email}`)
             return res.data;
         },
     })

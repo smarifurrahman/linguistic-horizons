@@ -34,7 +34,7 @@ const EnrolledClass = () => {
                     </thead>
                     <tbody>
                         {
-                            Array.isArray(classes) && classes?.map(aClass => <EnrolledRow
+                            classes?.map(aClass => <EnrolledRow
                                 key={aClass._id}
                                 aClass={aClass}
                             ></EnrolledRow>)
