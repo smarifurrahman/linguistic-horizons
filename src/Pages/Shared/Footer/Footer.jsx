@@ -19,14 +19,14 @@ const Footer = () => {
                 <div className='flex flex-col gap-4'>
                     <h5 className='text-lg font-semibold text-white'>Company</h5>
                     <Link>About Us</Link>
-                    <Link>Reviews</Link>
-                    <Link>Customers</Link>
-                    <Link>Sellers</Link>
+                    <Link>Our Reviews</Link>
+                    <Link>Instructors</Link>
+                    <Link>Top Students</Link>
                 </div>
                 <div className='flex flex-col gap-4'>
                     <h5 className='text-lg font-semibold text-white'>Product</h5>
-                    <Link>Latest Toys</Link>
-                    <Link>Prototype</Link>
+                    <Link>Popular Classes</Link>
+                    <Link>Popular Instructors</Link>
                     <Link>Pricing</Link>
                     <Link>Career</Link>
                 </div>
@@ -34,12 +34,13 @@ const Footer = () => {
                     <h5 className='text-lg font-semibold text-white'>Support</h5>
                     <Link>Help Desk</Link>
                     <Link>Corporate Sales</Link>
-                    <Link>Become a Partner</Link>
+                    <Link>Become an Instructor</Link>
                     <Link>Developers</Link>
                 </div>
                 <div className='flex flex-col gap-4'>
                     <h5 className='text-lg font-semibold text-white'>Contact</h5>
                     <Link>Chittagong - 4000, Bangladesh.</Link>
+                    <Link>contact@linghs.com</Link>
                     <Link>+88 011 - 222 - 555</Link>
                 </div>
             </div>
