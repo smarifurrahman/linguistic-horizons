@@ -69,14 +69,30 @@ const SelectedClass = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
-                    refetch()
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: `${aClass.className} is Enrolled!`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                    axiosSecure.patch(`/classes/selected/delete/${aClass._id}?email=${user.email}`)
+                        .then(res => res.data)
+                        .then(data => {
+                            console.log(data)
+                            if (data.modifiedCount) {
+                                refetch()
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: `${aClass.className} is Enrolled!`,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                            else {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'warning',
+                                    title: `${aClass.className} is Enrolled but Selected Classes Update Failed!`,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
                 }
                 else if (data.enrolled) {
                     Swal.fire({
@@ -100,7 +116,7 @@ const SelectedClass = () => {
                 <title>Linguistic Horizons | Selected Classes</title>
             </Helmet>
             <PageHeader title="Selected Classes"></PageHeader>
-            
+
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
