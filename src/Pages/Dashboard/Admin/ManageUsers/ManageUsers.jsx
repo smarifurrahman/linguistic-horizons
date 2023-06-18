@@ -4,9 +4,10 @@ import { Helmet } from "react-helmet-async";
 import useUsers from "../../../../hooks/useUsers";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import PageHeader from "../../../Shared/PageHeader/PageHeader";
+import Spinner from "../../../Shared/Spinner/Spinner";
 
 const ManageUsers = () => {
-    const [users, refetch] = useUsers();
+    const [users, refetch, loading] = useUsers();
     const [axiosSecure] = useAxiosSecure();
 
     const handleMakeAdmin = user => {
@@ -44,6 +45,10 @@ const ManageUsers = () => {
                     })
                 }
             })
+    }
+
+    if (loading) {
+        return <Spinner></Spinner>
     }
 
     return (

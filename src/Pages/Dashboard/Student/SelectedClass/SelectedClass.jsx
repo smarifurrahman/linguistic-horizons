@@ -6,13 +6,14 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import PageHeader from "../../../Shared/PageHeader/PageHeader";
+import Spinner from "../../../Shared/Spinner/Spinner";
 
 const SelectedClass = () => {
     const [classes, setClasses] = useState([]);
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
-    const [userInfo, refetch] = useSelectedClasses();
+    const [userInfo, refetch, loading] = useSelectedClasses();
 
     useEffect(() => {
         if (userInfo.selectedClasses) {
@@ -87,6 +88,10 @@ const SelectedClass = () => {
                     })
                 }
             })
+    }
+
+    if (loading) {
+        return <Spinner></Spinner>
     }
 
     return (

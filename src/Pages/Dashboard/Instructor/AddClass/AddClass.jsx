@@ -3,10 +3,11 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../../hooks/useAuth";
+import Spinner from "../../../Shared/Spinner/Spinner";
 
 const AddClass = () => {
     const [error, setError] = useState('');
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -50,6 +51,10 @@ const AddClass = () => {
                 console.error(error);
                 setError(error);
             })
+    }
+
+    if (loading) {
+        return <Spinner></Spinner>
     }
 
     return (

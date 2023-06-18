@@ -6,9 +6,10 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useClasses from "../../../../hooks/useClasses";
 import PageHeader from "../../../Shared/PageHeader/PageHeader";
+import Spinner from "../../../Shared/Spinner/Spinner";
 
 const ManageClasses = () => {
-    const [classes, refetch] = useClasses();
+    const [classes, refetch, loading] = useClasses();
     const [clickedClass, setClickedClass] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [axiosSecure] = useAxiosSecure();
@@ -81,6 +82,10 @@ const ManageClasses = () => {
                     })
                 }
             })
+    }
+
+    if (loading) {
+        return <Spinner></Spinner>
     }
 
     return (

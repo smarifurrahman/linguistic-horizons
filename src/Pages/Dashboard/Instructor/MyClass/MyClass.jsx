@@ -5,9 +5,10 @@ import { Helmet } from "react-helmet-async";
 import PageHeader from "../../../Shared/PageHeader/PageHeader";
 import useMyClasses from "../../../../hooks/useMyClasses";
 import MyClassRow from "./MyClassRow";
+import Spinner from "../../../Shared/Spinner/Spinner";
 
 const MyClass = () => {
-    const [classes, refetch] = useMyClasses();
+    const [classes, refetch, loading] = useMyClasses();
     const [clickedClass, setClickedClass] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [error, setError] = useState('');
@@ -56,6 +57,9 @@ const MyClass = () => {
             })
     }
 
+    if (loading) {
+        return <Spinner></Spinner>
+    }
 
     return (
         <div className='w-[85%] mx-auto'>

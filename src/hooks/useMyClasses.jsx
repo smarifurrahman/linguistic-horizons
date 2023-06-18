@@ -6,7 +6,7 @@ const useMyClasses = () => {
     const [axiosSecure] = useAxiosSecure();
     const { user, loading: authLoading } = useAuth();
 
-    const { refetch, data: users = [] } = useQuery({
+    const { refetch, isLoading: loading, data: users = [] } = useQuery({
         queryKey: ['classes'],
         enabled: !authLoading,
         queryFn: async () => {
@@ -15,7 +15,7 @@ const useMyClasses = () => {
         },
     })
 
-    return [users, refetch];
+    return [users, refetch, loading];
 };
 
 export default useMyClasses;
