@@ -6,7 +6,7 @@ const ErrorPage = () => {
     const error = useRouteError();
     return (
         <div className='flex flex-col justify-center items-center gap-5 w-screen h-screen'>
-            <img className='w-[250px]' src={error_Image} alt="" />
+            <img className='w-[250px]' src={error_Image} alt="error photo" />
             <h1 className='text-3xl font-bold hover:text-pink-start'>Oops!</h1>
             <p className='text-lg'>Sorry, an unexpected error has occurred.</p>
             <p>

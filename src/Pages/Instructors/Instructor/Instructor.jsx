@@ -6,7 +6,7 @@ const Instructor = ({ instructor }) => {
     return (
         <div className="p-4">
             <div className="h-full flex flex-col items-center text-center">
-                <img alt="team" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src={photo} />
+                <img alt="instructor photo" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src={photo} />
                 <div className="w-full">
                     <h2 className="title-font font-medium text-lg text-gray-900">{name}</h2>
                     <h3 className="text-gray-500 mb-3">{email}</h3>

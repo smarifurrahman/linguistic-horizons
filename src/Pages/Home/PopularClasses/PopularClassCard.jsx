@@ -6,7 +6,7 @@ const PopularClassCard = ({ singleClass }) => {
     return (
         <div className="card min-w-[200px] bg-base-100 shadow-xl">
             <figure>
-                <img className='h-[260px] w-full object-cover' src={classPhoto} alt="Shoes" />
+                <img className='h-[260px] w-full object-cover' src={classPhoto} alt="class photo" />
             </figure>
             <div className="card-body text-center">
                 <h2 className="font-bold text-xl text-center">{className}</h2>
