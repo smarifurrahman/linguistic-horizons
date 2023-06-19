@@ -8,7 +8,7 @@ const PopularClassCard = ({ singleClass }) => {
             <figure>
                 <img className='h-[260px] w-full object-cover' src={classPhoto} alt="Shoes" />
             </figure>
-            <div className="card-body">
+            <div className="card-body text-center">
                 <h2 className="font-bold text-xl text-center">{className}</h2>
 
                 <h4 className='font-semibold mt-4'>Instructor: {instructorName}</h4>
