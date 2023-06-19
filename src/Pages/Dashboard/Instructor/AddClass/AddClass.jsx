@@ -20,10 +20,11 @@ const AddClass = () => {
             instructorName,
             instructorEmail,
             instructorPhoto: user.photoURL,
-            availableSeats,
-            price,
+            availableSeats: parseInt(availableSeats),
+            price: parseFloat(price),
             status: 'Pending',
             enrolledStudents: [],
+            enrolledStudentsCount: 0,
         }
 
         console.log(classInfo);

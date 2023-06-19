@@ -23,8 +23,8 @@ const MyClass = () => {
         const updateClassInfo = {
             className,
             classPhoto,
-            availableSeats,
-            price,
+            availableSeats: parseInt(availableSeats),
+            price: parseFloat(price),
         };
 
         console.log(updateClassInfo)
