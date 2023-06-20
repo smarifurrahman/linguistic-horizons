@@ -42,9 +42,9 @@ const NavBar = () => {
     </>
 
     return (
-        <div className={`navbar w-[85%] mx-auto py-5 flex items-center font-bold px-0 ${currentPath === '/' ? 'absolute left-0 right-0 top-0 z-50 text-white' : 'text-dark'}`}>
+        <div className={`navbar w-[85%] mx-auto py-7 flex items-center font-bold px-0 ${currentPath === '/' ? 'absolute left-0 right-0 top-0 z-50 text-white' : 'text-dark'}`}>
             <div className="navbar-start">
-                <Link to="/" className="normal-case text-xl sm:text-[21px] hover:text-primary-color">Linguistic Horizons</Link>
+                <Link to="/" className="normal-case text-2xl hover:text-primary-color whitespace-nowrap">Linguistic Horizons</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
