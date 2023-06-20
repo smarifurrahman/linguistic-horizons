@@ -16,6 +16,7 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [authLoading, setAuthLoading] = useState(true);
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -61,10 +62,12 @@ const AuthProvider = ({ children }) => {
                     .then(data => {
                         localStorage.setItem('access-token', data.data.token)
                         setLoading(false);
+                        setAuthLoading(false)
                     })
             }
             else {
                 localStorage.removeItem('access-token')
+                setAuthLoading(false)
             }
         })
 
@@ -81,7 +84,8 @@ const AuthProvider = ({ children }) => {
         updateUser,
         googleSignIn,
         githubSignIn,
-        logOut
+        logOut,
+        authLoading,
     }
 
 

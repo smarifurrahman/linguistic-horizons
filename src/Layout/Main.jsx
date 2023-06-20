@@ -5,9 +5,9 @@ import useAuth from "../hooks/useAuth";
 import PageSpinner from "../Pages/Shared/PageSpinner/PageSpinner";
 
 const Main = () => {
-    const { user } = useAuth();
+    const { authLoading } = useAuth();
 
-    if (!user) {
+    if (authLoading) {
         return <PageSpinner></PageSpinner>
     }
 
