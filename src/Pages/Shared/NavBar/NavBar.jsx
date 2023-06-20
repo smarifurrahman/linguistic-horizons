@@ -1,10 +1,13 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ActiveRoute from "../ActiveRoute/ActiveRoute";
 import useAuth from "../../../hooks/useAuth";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
+
+    const location = useLocation();
+    const currentPath = location.pathname;
 
     const navItems = <>
         <li><ActiveRoute to="/">Home</ActiveRoute></li>
@@ -39,9 +42,8 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="navbar w-[85%] mx-auto py-5 flex items-center absolute left-0 right-0 top-0 z-50 text-white font-bold px-0">
+        <div className={`navbar w-[85%] mx-auto py-5 flex items-center font-bold px-0 ${currentPath === '/' ? 'absolute left-0 right-0 top-0 z-50 text-white' : 'text-dark'}`}>
             <div className="navbar-start">
-
                 <Link to="/" className="normal-case text-xl sm:text-[21px] hover:text-primary-color">Linguistic Horizons</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -49,6 +51,7 @@ const NavBar = () => {
                     {navItems}
                 </ul>
             </div>
+
             <div className="navbar-end">
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden px-0">
