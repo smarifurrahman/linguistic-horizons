@@ -8,7 +8,6 @@ import PageHeader from "../../../Shared/PageHeader/PageHeader";
 const EnrolledClass = () => {
 
     const [classes, loading] = useEnrolledClasses();
-    console.log(classes);
 
     if (loading) {
         return <Spinner></Spinner>

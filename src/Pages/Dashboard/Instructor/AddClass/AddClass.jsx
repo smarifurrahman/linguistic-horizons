@@ -27,8 +27,6 @@ const AddClass = () => {
             enrolledStudentsCount: 0,
         }
 
-        console.log(classInfo);
-
         fetch('http://localhost:5000/addClass', {
             method: 'POST',
             headers: {
@@ -38,7 +36,6 @@ const AddClass = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     reset();
                     Swal.fire(

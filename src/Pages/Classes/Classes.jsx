@@ -17,7 +17,6 @@ const Classes = () => {
         axiosSecure.get('/classes/?status=Approved')
             .then(res => res.data)
             .then(data => {
-                console.log(data);
                 setClasses(data);
                 setLoading(false)
             })
@@ -31,7 +30,6 @@ const Classes = () => {
         axiosSecure.patch(`/classes/selected/${singleClass._id}?email=${user.email}`)
             .then(res => res.data)
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     Swal.fire({
                         position: 'center',

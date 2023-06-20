@@ -14,7 +14,6 @@ const ManageUsers = () => {
         axiosSecure.patch(`/users/admin/${user._id}`)
             .then(res => res.data)
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -33,7 +32,6 @@ const ManageUsers = () => {
         axiosSecure.patch(`/users/instructor/${user._id}`)
             .then(res => res.data)
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({

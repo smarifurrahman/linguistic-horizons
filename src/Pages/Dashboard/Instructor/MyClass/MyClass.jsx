@@ -27,8 +27,6 @@ const MyClass = () => {
             price: parseFloat(price),
         };
 
-        console.log(updateClassInfo)
-
         fetch(`http://localhost:5000/classes/updateclass/${clickedClass._id}`, {
             method: 'PATCH',
             headers: {
@@ -38,7 +36,6 @@ const MyClass = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     reset();
                     refetch();

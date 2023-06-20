@@ -14,7 +14,6 @@ const Instructors = () => {
         axiosSecure.get(`/users/?role=Instructor`)
             .then(res => res.data)
             .then(data => {
-                console.log(data);
                 setInstructors(data);
                 setLoading(false)
             })

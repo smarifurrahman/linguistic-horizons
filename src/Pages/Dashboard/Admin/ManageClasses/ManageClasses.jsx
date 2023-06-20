@@ -14,12 +14,10 @@ const ManageClasses = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [axiosSecure] = useAxiosSecure();
 
-    console.log(classes)
     const handleApprove = aClass => {
         axiosSecure.patch(`/classes/approved/${aClass._id}`)
             .then(res => res.data)
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -37,7 +35,6 @@ const ManageClasses = () => {
         axiosSecure.patch(`/classes/denied/${aClass._id}`)
             .then(res => res.data)
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -69,7 +66,6 @@ const ManageClasses = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     reset();
                     refetch();

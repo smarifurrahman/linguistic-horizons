@@ -13,7 +13,6 @@ const PopularClasses = () => {
         axiosSecure.get('/classes/?sort=true')
             .then(res => res.data)
             .then(data => {
-                console.log(data);
                 if (data.length > 8) {
                     const newData = data.slice(0, 8);
                     setClasses(newData);

@@ -18,7 +18,6 @@ const SelectedClass = () => {
     useEffect(() => {
         if (userInfo.selectedClasses) {
             const ids = userInfo.selectedClasses;
-            console.log(ids);
             fetch(`http://localhost:5000/selected-classes`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
@@ -30,8 +29,6 @@ const SelectedClass = () => {
                 })
         }
     }, [userInfo.selectedClasses])
-
-    console.log(classes)
 
     const handleDelete = aClass => {
         Swal.fire({
@@ -47,7 +44,6 @@ const SelectedClass = () => {
                 axiosSecure.patch(`/classes/selected/delete/${aClass._id}?email=${user.email}`)
                     .then(res => res.data)
                     .then(data => {
-                        console.log(data)
                         if (data.modifiedCount) {
                             refetch()
                             Swal.fire({
@@ -67,12 +63,10 @@ const SelectedClass = () => {
         axiosSecure.patch(`/classes/enrolled/${aClass._id}?email=${user.email}`)
             .then(res => res.data)
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     axiosSecure.patch(`/classes/selected/delete/${aClass._id}?email=${user.email}`)
                         .then(res => res.data)
                         .then(data => {
-                            console.log(data)
                             if (data.modifiedCount) {
                                 refetch()
                                 Swal.fire({

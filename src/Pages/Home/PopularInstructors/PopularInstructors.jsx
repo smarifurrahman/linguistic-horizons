@@ -13,7 +13,6 @@ const PopularInstructors = () => {
         axiosSecure.get('/popular-instructors')
             .then(res => res.data)
             .then(data => {
-                console.log(data);
                 if (data.length > 8) {
                     const newData = data.slice(0, 8);
                     setInstructors(newData);
