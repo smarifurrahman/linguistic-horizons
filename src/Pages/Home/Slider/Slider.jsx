@@ -33,7 +33,7 @@ const Slider = () => {
                 <img src={slide2} className="w-full object-cover" />
                 <div className="absolute text-white bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] w-full h-full flex items-center">
                     <div className=' w-[85%] mx-auto'>
-                        <div className='w-3/4 md:w-1/2'>
+                        <div className='w-3/4 md:w-[60%]'>
                             <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold font-playfair'>Unlock Your Potential with Linguistic Horizons</h1>
                             <p className='font-medium my-5'>Embark on an Unforgettable Linguistic Journey: Discover New Worlds, Forge Connections, and Master Multiple Languages with Linguistic Horizons!</p>
                             <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark px-6">
@@ -54,7 +54,7 @@ const Slider = () => {
                 <img src={slide3} className="w-full object-cover" />
                 <div className="absolute text-white bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] w-full h-full flex items-center">
                     <div className=' w-[85%] mx-auto'>
-                        <div className='w-3/4 md:w-1/2'>
+                        <div className='w-3/4 md:w-[60%]'>
                             <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold font-playfair'>Unlock Your Potential with Linguistic Horizons</h1>
                             <p className='font-medium my-5'>Embark on an Unforgettable Linguistic Journey: Discover New Worlds, Forge Connections, and Master Multiple Languages with Linguistic Horizons!</p>
                             <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark px-6">
@@ -75,7 +75,7 @@ const Slider = () => {
                 <img src={slide4} className="w-full object-cover" />
                 <div className="absolute text-white bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] w-full h-full flex items-center">
                     <div className=' w-[85%] mx-auto'>
-                        <div className='w-3/4 md:w-1/2'>
+                        <div className='w-3/4 md:w-[60%]'>
                             <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold font-playfair'>Unlock Your Potential with Linguistic Horizons</h1>
                             <p className='font-medium my-5'>Embark on an Unforgettable Linguistic Journey: Discover New Worlds, Forge Connections, and Master Multiple Languages with Linguistic Horizons!</p>
                             <a className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color text-dark px-6">
