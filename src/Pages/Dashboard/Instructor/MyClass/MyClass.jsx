@@ -27,7 +27,7 @@ const MyClass = () => {
             price: parseFloat(price),
         };
 
-        fetch(`http://localhost:5000/classes/updateclass/${clickedClass._id}`, {
+        fetch(`https://linguistic-horizons-server.vercel.app/classes/updateclass/${clickedClass._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

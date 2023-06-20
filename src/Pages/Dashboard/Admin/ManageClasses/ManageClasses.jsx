@@ -57,7 +57,7 @@ const ManageClasses = () => {
         const feedback = data.feedback;
         const feedbackInfo = { feedback };
 
-        fetch(`http://localhost:5000/classes/feedback/${clickedClass._id}`, {
+        fetch(`https://linguistic-horizons-server.vercel.app/classes/feedback/${clickedClass._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
