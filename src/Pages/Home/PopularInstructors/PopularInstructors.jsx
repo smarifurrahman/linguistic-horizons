@@ -10,7 +10,7 @@ const PopularInstructors = () => {
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get('/popular-instructors')
+        axiosSecure.get('/instructors')
             .then(res => res.data)
             .then(data => {
                 if (data.length > 8) {

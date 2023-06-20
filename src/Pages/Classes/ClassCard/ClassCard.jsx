@@ -2,7 +2,6 @@
 const ClassCard = ({ singleClass, handleSelectClass }) => {
 
     const { classPhoto, className, instructorName, availableSeats, price } = singleClass;
-    // todo: check this
     return (
         <div className="card min-w-[200px] bg-base-100 shadow-xl">
             <figure>

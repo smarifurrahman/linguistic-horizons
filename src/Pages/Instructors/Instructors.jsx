@@ -11,7 +11,7 @@ const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get(`/users/?role=Instructor`)
+        axiosSecure.get(`/instructors`)
             .then(res => res.data)
             .then(data => {
                 setInstructors(data);

@@ -36,7 +36,7 @@ const NavBar = () => {
                 :
                 <>
                     <li><ActiveRoute to="/signup">Sign Up</ActiveRoute></li>
-                    <li><Link to="/login" className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-3 md:px-6 text-dark content-center">Login</Link></li>
+                    <li><Link to="/login" className="btn bg-primary-color hover:bg-secondary-color border-primary-color hover:border-secondary-color px-3 md:px-6 text-dark content-center mt-3">Login</Link></li>
                 </>
         }
     </>

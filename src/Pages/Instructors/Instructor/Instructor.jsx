@@ -1,17 +1,16 @@
 
 const Instructor = ({ instructor }) => {
 
-    const { photo, name, email } = instructor;
-// todo: check this
+    const { instructorPhoto, instructorName, instructorEmail, totalEnrolledStudents, totalCoursesTaken } = instructor;
     return (
         <div className="p-4">
             <div className="h-full flex flex-col items-center text-center">
-                <img alt="instructor photo" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src={photo} />
+                <img alt="instructor photo" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src={instructorPhoto} />
                 <div className="w-full">
-                    <h2 className="title-font font-medium text-lg text-gray-900">{name}</h2>
-                    <h3 className="text-gray-500 mb-3">{email}</h3>
-                    <p className="mb-4">Enrolled Students</p>
-                    <p className="mb-4">Classes Taken</p>
+                    <h2 className="title-font font-medium text-lg text-gray-900">{instructorName}</h2>
+                    <h3 className="text-gray-500 mb-3">{instructorEmail}</h3>
+                    <p className="mb-4">Enrolled Students: {totalEnrolledStudents}</p>
+                    <p className="mb-4">Total Courses Taken: {totalCoursesTaken}</p>
 
                     <span className="inline-flex">
                         <a className="text-gray-500">
