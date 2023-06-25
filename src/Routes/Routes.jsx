@@ -17,6 +17,7 @@ import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
 import MyClass from "../Pages/Dashboard/Instructor/MyClass/MyClass";
+import Payment from "../Pages/Dashboard/Student/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
             {
                 path: 'enrolled-class',
                 element: <EnrolledClass></EnrolledClass>
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>
             }
         ]
     }

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
-const SelectedRow = ({ aClass, handleDelete, handlePay, }) => {
-    const { classPhoto, className, instructorName, instructorEmail, availableSeats, price, status } = aClass;
+const SelectedRow = ({ aClass, handleDelete }) => {
+    const { classPhoto, className, instructorName, instructorEmail, availableSeats, price, status, _id } = aClass;
 
     return (
         <tr>
@@ -24,7 +25,8 @@ const SelectedRow = ({ aClass, handleDelete, handlePay, }) => {
             <th>
                 <div className="flex flex-col gap-2 w-fit">
                     <button onClick={() => handleDelete(aClass)} className="btn btn-ghost btn-xs bg-primary-color">Delete</button>
-                    <button onClick={() => handlePay(aClass)} className="btn btn-ghost btn-xs bg-pink-color">Pay</button>
+                    {/* <button onClick={() => handlePay(aClass)} className="btn btn-ghost btn-xs bg-pink-color">Pay</button> */}
+                    <Link to={`/dashboard/payment/${_id}`}><button className="btn btn-ghost btn-xs bg-pink-color w-full">Pay</button></Link>
                 </div>
             </th>
         </tr>
