@@ -27,7 +27,7 @@ const AddClass = () => {
             enrolledStudentsCount: 0,
         }
 
-        fetch('https://linguistic-horizons-server.vercel.app/addClass', {
+        fetch('http://localhost:5000/addClass', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
